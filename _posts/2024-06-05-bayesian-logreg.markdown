@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Bayesian Logistic Regression"
+date: 2024-06-05
 permalink: /nba/bayeslogreg
 ---
 
