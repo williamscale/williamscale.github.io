@@ -7,4 +7,3 @@ title: NBA
 
 [Bayesian Logistic Regression](https://williamscale.github.io/sports/isye6420_project.pdf)
 
-[jekyll-organization]: https://github.com/jekyll

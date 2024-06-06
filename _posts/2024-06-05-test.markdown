@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "test"
+title:  "2022-23 NBA Shotchart Dashboard"
 date:   2024-06-05 17:52:40 -0500
-categories: jekyll update
+categories: nba
+permalink: /nba
 ---
 
-this is a test!!!
+[2022-23 NBA Shot Dashboard](https://calewilliams.shinyapps.io/FG_Dashboard/)
