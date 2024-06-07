@@ -55,5 +55,7 @@ plugins:
 #   - vendor/ruby/
 
 collections:
-  - nba
-  - maps
+  nba:
+    output: true
+  maps:
+    output: true
