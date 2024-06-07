@@ -57,4 +57,3 @@ plugins:
 collections:
   nba:
     output: true
-    permalink: /:collection/:name
