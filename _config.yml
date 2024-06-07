@@ -55,5 +55,9 @@ plugins:
 #   - vendor/ruby/
 
 collections:
-  - nba
-  - maps
+  nba:
+    output: true
+    permalink: /nba/:path/
+  maps:
+    output: true
+    permalink: /maps/:path/
