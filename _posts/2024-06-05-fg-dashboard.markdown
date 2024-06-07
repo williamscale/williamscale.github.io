@@ -2,7 +2,6 @@
 layout: post
 title:  "2022-23 NBA Shotchart Dashboard"
 date: 2024-06-04
-permalink: /nba/fg_dashboard
 ---
 
 this is a post
