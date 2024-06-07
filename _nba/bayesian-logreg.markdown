@@ -1,4 +1,5 @@
 ---
+layout: nba
 title:  Bayesian Logistic Regression
 ---
 
