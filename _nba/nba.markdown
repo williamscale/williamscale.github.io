@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "NBA Projects"
+title:  NBA Projects
 ---
 
 {% for themes in site.themes %}

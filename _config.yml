@@ -57,5 +57,7 @@ plugins:
 collections:
   nba:
     output: true
+    permalink: /:collection/:name
   maps:
     output: true
+    permalink: /:collection/:name
