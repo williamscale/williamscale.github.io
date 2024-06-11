@@ -10,7 +10,8 @@ In this project, I will investigate the shot selection of the Spurs' opponent's 
 
 Shotcharts for each lineup are below. Note these include both missed and made field goals.
 
-![image info](https://williamscale.github.io/attachments/shot-diet-defense-centers/fga.png)
+![FGA](https://williamscale.github.io/attachments/shot-diet-defense-centers/fga.png)
+![FGA Hex](https://williamscale.github.io/attachments/shot-diet-defense-centers/fga_log.png)
+![FGA Density](https://williamscale.github.io/attachments/shot-diet-defense-centers/fga_dens.png)
 
-This is too dense to be of use, so here are heatmaps.
 
