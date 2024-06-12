@@ -20,14 +20,10 @@ The hexagonal heatmap is shown on a log scale so that shots at the rim, which ar
 
 For example, the highlighted cell below is:
 
-\begin{table}[]
-\begin{tabular}{llll}
-C                            & Zone FGA & Total FGA & Opponent FGA Rate \\ \cline{2-4} 
-
-\multicolumn{1}{l|}{VW}      & 81       & 3,249     & 0.025             \\
-\multicolumn{1}{l|}{ZC}      & 39       & 2,119     & 0.018             \\
-\multicolumn{1}{l|}{VW + ZC} & 14       & 839       & 0.017            
-\end{tabular}
-\end{table}
+| C                    | Zone FGA | Total FGA | Opponent FGA Rate |
+|----------------------|----------|-----------|-------------------|
+| Wembanyama           | 81       | 3,249     | 0.025             |
+| Collins              | 39       | 2,119     | 0.018             |
+| Wembanyama + Collins | 14       | 839       | 0.017             |
 
 ![FGA Rate Leading C Ex](https://williamscale.github.io/attachments/shot-diet-defense-centers/attempt_rate_leadingC_ex.png)
