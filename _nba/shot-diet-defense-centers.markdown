@@ -1,7 +1,27 @@
 ---
 layout: nba
-title: 2023-24 Spurs Opponent FGA By Center
+title: 2023-24 Spurs Center Rim Protection
 ---
+
+In this project, I will investigate the rim protection of Victor Wembanyama and Zach Collins. Much of my approach is derived from Seth Partnow's thought process in this [interview](https://www.nytimes.com/athletic/1870696/2020/06/15/evaluation-orlando-magic-rim-protection/).
+
+First, I scraped all field goal attempts by Spurs opponents with their outcome, timestamps, and coordinates. I then scraped the Spurs rotations and filtered the dataset to include only field goal attempts with one of, but not both, Wembanyama or Collins on the court. Finally, I calculated the distance of the shot and removed all attempts further than 6 feet from the rim. This value was chosen in order to coincide with the NBA's stats defense dashboard demarcations. I'll refer to the remaining FGA as "rim FGA" since they are near the basket.
+
+## Rim Deterrence
+
+For rim deterrence, I'm ignoring the outcome of each FGA.
+
+Below is the summary of scraped FGA. I think these numbers do not match the [NBA's tracking data](https://www.nba.com/stats/player/1641705/defense-dash?PerMode=Totals&SeasonType=Regular%20Season&dir=D&sort=DEFENSE_CATEGORY) because these are FGA with the player on the court, not necessarily the player assigned as the defending player.
+
+| Center On Court | Opp Total FGA | Opp Rim FGA | Opp Rim Rate | Contested Opp Rim FGA | Contest Rim Rate |
+|-----------------|---------------|-------------|--------------| ----------------------| -----------------|
+| Wembanyama      | 3,249         | 1,203       | 0.370        | [586](https://www.nba.com/stats/player/1641705/defense-dash?PerMode=Totals&SeasonType=Regular%20Season&dir=D&sort=DEFENSE_CATEGORY)                   | 0.487            |
+| Collins         | 2,119         | 748         | 0.353        | [424](https://www.nba.com/stats/player/1628380/defense-dash?PerMode=Totals&SeasonType=Regular%20Season&dir=D&sort=DEFENSE_CATEGORY)                   | 0.567            |
+
+
+With Collins on the court, opponents shoot less frequently at the rim and of the shots they do take at the rim, he is contesting them more often than Wembanyama does.
+
+## Rim Defense
 
 In this project, I will investigate the shot selection of the Spurs' opponent's based on the center on the court for San Antonio. The centers evaluated are
 * <span style="color:#EF426F">Victor Wembanyama</span>,
@@ -28,6 +48,8 @@ For example, the highlighted cell below is calculated using the following values
 
 ![FGA Rate Leading C Ex](https://williamscale.github.io/attachments/shot-diet-defense-centers/attempt_rate_leadingC_ex.png)
 
-What I'm more interested in, though, is the rim protection of these lineups as this is often the center's role on defense. The overall shot selection of the opponent's may depend on the Spurs' center, but it's only a small piece of the puzzle. Gameplans, the other Spur defenders, and opponent's offensive players on the court probably contribute more to the shot selection. Therefore, I filtered out FGA further than 10 feet from the rim. This distance was chosen arbitrarily.
+What I'm more interested in, though, is the rim protection of these lineups as this is often the center's role on defense. The overall shot selection of the opponent's may depend on the Spurs' center, but it's only a small piece of the puzzle. Gameplans, the other Spur defenders, and opponent's offensive players on the court probably contribute more to the shot selection. Seth Partnow ([@SethPartnow](https://x.com/SethPartnow)) has done a lot of writing on rim protection and its intricacies and has split up rim protection into two parts: *shot protection* and *shot deterrence*. I'm going to use these categories as well. Therefore, I filtered out FGA further than 10 feet from the rim. This distance was chosen arbitrarily.
+
+Firstly, shot deterrence. 
 
 ![FGA Hex At Rim](https://williamscale.github.io/attachments/shot-diet-defense-centers/fga_at_rim.png)
