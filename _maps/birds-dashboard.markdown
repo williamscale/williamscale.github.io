@@ -1,6 +1,6 @@
 ---
 layout: maps
-title: National Park & Bird Sighting Dashboard
+title: biRds
 ---
 
 [Shiny App](https://calewilliams.shinyapps.io/biRds/)
