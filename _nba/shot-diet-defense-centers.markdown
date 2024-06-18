@@ -3,30 +3,32 @@ layout: nba
 title: 2023-24 Spurs Center Rim Protection
 ---
 
-In this project, I will investigate the rim protection of Victor Wembanyama and Zach Collins. Much of my approach is derived from Seth Partnow's thought process in this [interview](https://www.nytimes.com/athletic/1870696/2020/06/15/evaluation-orlando-magic-rim-protection/).
+In this project, I will investigate the rim protection of <span style="color:#EF426F">Victor Wembanyama</span> and <span style="color:#00B2A9">Zach Collins</span>. Much of my approach is derived from Seth Partnow's thought process in this [interview](https://www.nytimes.com/athletic/1870696/2020/06/15/evaluation-orlando-magic-rim-protection/).
 
 First, I scraped all field goal attempts by Spurs opponents with their outcome, timestamps, and coordinates. I then scraped the Spurs rotations and filtered the dataset to include only field goal attempts with one of, but not both, Wembanyama or Collins on the court. Finally, I calculated the distance of the shot and removed all attempts further than 6 feet from the rim. This value was chosen in order to coincide with the NBA's stats defense dashboard demarcations. I'll refer to the remaining FGA as "rim FGA" since they are near the basket.
 
+As expected, the distribution of FGA is bimodal, with most shots being taken at the rim or the 3-point line.
+
+![Density](https://williamscale.github.io/attachments/shot-diet-defense-centers/dens_distance.png)
+![Density Rim](https://williamscale.github.io/attachments/shot-diet-defense-centers/dens_distance_rim.png)
+
 ## Rim Deterrence
 
-For rim deterrence, I'm ignoring the outcome of each FGA.
+For rim deterrence, I'm ignoring the outcome of each FGA. That will be covered in the rim defense section.
 
-Below is the summary of scraped FGA. I think these numbers do not match the [NBA's tracking data](https://www.nba.com/stats/player/1641705/defense-dash?PerMode=Totals&SeasonType=Regular%20Season&dir=D&sort=DEFENSE_CATEGORY) because these are FGA with the player on the court, not necessarily the player assigned as the defending player.
+Below is the summary of scraped FGA. I think these numbers do not match the [NBA's tracking data](https://www.nba.com/stats/player/1641705/defense-dash?PerMode=Totals&SeasonType=Regular%20Season&dir=D&sort=DEFENSE_CATEGORY) because these are FGA with the player on the court, not necessarily if they are assigned as the defending player. For example, Wembanyama could be actively guarding Brook Lopez at the wing 3 while Khris Middleton gets a layup over Julian Champagnie. This would be captured in my dataset since Wembanyama is on the court, but would only be captured in the NBA dataset under Champagnie's defensive tracking data.
 
-| Center On Court | Opp Total FGA | Opp Rim FGA | Opp Rim Rate | Contested Opp Rim FGA | Contest Rim Rate |
+| Center On Court | Opp Total FGA | Opp Rim FGA | Opp Rim Rate | Contested Opp Rim FGA | Rim Contest Rate |
 |-----------------|---------------|-------------|--------------| ----------------------| -----------------|
-| Wembanyama      | 3,249         | 1,203       | 0.370        | [586](https://www.nba.com/stats/player/1641705/defense-dash?PerMode=Totals&SeasonType=Regular%20Season&dir=D&sort=DEFENSE_CATEGORY)                   | 0.487            |
-| Collins         | 2,119         | 748         | 0.353        | [424](https://www.nba.com/stats/player/1628380/defense-dash?PerMode=Totals&SeasonType=Regular%20Season&dir=D&sort=DEFENSE_CATEGORY)                   | 0.567            |
+| Wembanyama      | 3,249         | 1,203       | 0.370        | [586](https://www.nba.com/stats/player/1641705/defense-dash?PerMode=Totals&SeasonType=Regular%20Season&dir=D&sort=DEFENSE_CATEGORY) | 0.487 |
+| Collins         | 2,119         | 748         | 0.353        | [424](https://www.nba.com/stats/player/1628380/defense-dash?PerMode=Totals&SeasonType=Regular%20Season&dir=D&sort=DEFENSE_CATEGORY) | 0.567 |
 
 
-With Collins on the court, opponents shoot less frequently at the rim and of the shots they do take at the rim, he is contesting them more often than Wembanyama does.
+With Collins on the court, opponents shoot slightly less frequently at the rim and of the shots they do take at the rim, he is contesting them more often than Wembanyama does. This is not what I expected. It seems like Wembanyama contests everything, but perhaps teams are more deliberate about luring him away from the basket before taking rim attempts and they don't bother taking the shot if he is in position to contest it.
 
 ## Rim Defense
 
-In this project, I will investigate the shot selection of the Spurs' opponent's based on the center on the court for San Antonio. The centers evaluated are
-* <span style="color:#EF426F">Victor Wembanyama</span>,
-* <span style="color:#00B2A9">Zach Collins</span>,
-* and both <span style="color:#FF8200">Wembanyama and Collins</span> together.
+
 
 Shotcharts for each lineup are below. Note these include both missed and made field goals.
 
