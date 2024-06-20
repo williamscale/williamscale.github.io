@@ -50,7 +50,7 @@ Collins is in the middle of the pack with both defended FGA and defended FG%, wh
 
 ![Rim Defense Scatter Norm](https://williamscale.github.io/attachments/shot-diet-defense-centers/rim_defense_scatter2.png)
 
-Including blocks into the analysis is a bit tougher because I don't know of any publicly available data that shows where a block happened on the court. Wembanyama probably blocks more jump shots than the other players in this dataset, so assuming all blocks are at the rim would be overestimating his rim block rate. However, until more granular data is available, this is what I have to work with. Therefore, I calculate a block rate as $`BLK% = \frac{BLK}{DFGA}`$. $BLK% = \frac{BLK}{DFGA}$
+Including blocks into the analysis is a bit tougher because I don't know of any publicly available data that shows where a block happened on the court. Wembanyama probably blocks more jump shots than the other players in this dataset, so assuming all blocks are at the rim would be overestimating his rim block rate. However, until more granular data is available, this is what I have to work with. Therefore, I calculate a block rate as $$`BLK = \frac{BLK}{DFGA}`$$. $$BLK = \frac{BLK}{DFGA}$$
 
 | Rank    | Player            | BLK     | DFGA    | BLK% &#9660; |
 |:-------:|:------------------|:-------:|:-------:|:------------:|
