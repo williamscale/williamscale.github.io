@@ -3,9 +3,48 @@ layout: nba
 title: 2023-24 Spurs Center Rim Protection
 ---
 
-In this project, I will investigate the rim protection of <span style="color:#EF426F">Victor Wembanyama</span> and <span style="color:#00B2A9">Zach Collins</span>. Much of my approach is derived from Seth Partnow's thought process in this [interview](https://www.nytimes.com/athletic/1870696/2020/06/15/evaluation-orlando-magic-rim-protection/).
+In this project, I will investigate the rim protection of <span style="color:#EF426F">Victor Wembanyama</span> and <span style="color:#00B2A9">Zach Collins</span>. Much of my approach is derived from Seth Partnow's thought process in this [interview](https://www.nytimes.com/athletic/1870696/2020/06/15/evaluation-orlando-magic-rim-protection/). Like Seth, I split up rim protection into *rim deterrence* and *rim defense*. Additionally, I explored defensive rebounding as another aspect of rim protection. If a player leaves his feet for a block attempt and misses, he may have altered the shot enough to force a miss, but be more susceptible to giving up an easy offensive rebound and putback.
 
-First, I scraped all field goal attempts by Spurs opponents with their outcome, timestamps, and coordinates. I then scraped the Spurs rotations and filtered the dataset to include only field goal attempts with one of, but not both, Wembanyama or Collins on the court. Finally, I calculated the distance of the shot and removed all attempts further than 6 feet from the rim. This value was chosen in order to coincide with the NBA's stats defense dashboard demarcations. I'll refer to the remaining FGA as "rim FGA" since they are near the basket.
+## Data
+
+All data comes from [NBA Stats](https://www.nba.com/stats/) and is scraped via the [hoopR package](https://hoopr.sportsdataverse.org/).
+
+Player stats were limited to players in the 2023-24 NBA season who
+* played in at least 30 games,
+* averaged at least 10 minutes per game, and
+* are 6'10" or taller.
+
+This resulted in 72 players.
+
+Field goals included are those within 6 feet of the rim. This distance was selected to align with NBA Stats distance bins.
+
+## Rim Deterrence
+
+
+
+## Rim Defense
+
+Below is a snippet of the data evaluated, sorted by defended FGA descending.
+
+| Player           | GP | MP    | Defended FGM | Defended FGA | Defended FG% |
+|------------------|----|-------|--------------|--------------|--------------|
+| Brook Lopez      | 79 | 2,411 | 375          | 673          | 0.557        |
+| Chet Holmgren    | 82 | 2,413 | 352          | 666          | 0.529        |
+| Nikola Jokic     | 78 | 2,737 | 425          | 657          | 0.647        |
+| Domantas Sabonis | 82 | 2,928 | 364          | 621          | 0.586        |
+| Rudy Gobert      | 76 | 2,593 | 292          | 591          | 0.494        |
+| ⋮ | ⋮ | ⋮ | ⋮ | ⋮ | ⋮ |
+| Rudy Gobert      | 76 | 2,593 | 292          | 591          | 0.494        |
+
+
+## Rim Rebounding
+
+
+
+
+
+
+<!-- First, I scraped all field goal attempts by Spurs opponents with their outcome, timestamps, and coordinates. I then scraped the Spurs rotations and filtered the dataset to include only field goal attempts with one of, but not both, Wembanyama or Collins on the court. Finally, I calculated the distance of the shot and removed all attempts further than 6 feet from the rim. This value was chosen in order to coincide with the NBA's stats defense dashboard demarcations. I'll refer to the remaining FGA as "rim FGA" since they are near the basket.
 
 As expected, the distribution of FGA is bimodal, with most shots being taken at the rim or the 3-point line.
 
@@ -54,4 +93,4 @@ What I'm more interested in, though, is the rim protection of these lineups as t
 
 Firstly, shot deterrence. 
 
-![FGA Hex At Rim](https://williamscale.github.io/attachments/shot-diet-defense-centers/fga_at_rim.png)
+![FGA Hex At Rim](https://williamscale.github.io/attachments/shot-diet-defense-centers/fga_at_rim.png) -->
