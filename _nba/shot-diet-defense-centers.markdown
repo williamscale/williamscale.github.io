@@ -24,21 +24,23 @@ Field goals included are those within 6 feet of the rim. This distance was selec
 
 ## Rim Defense
 
-Below is a snippet of the data evaluated, sorted by defended FGA descending.
 
-| Player             | GP | MP    | Defended FGM | Defended FGA &#9660; | Defended FG% |
-|--------------------|----|-------|--------------|--------------|--------------|
-| Brook Lopez        | 79 | 2,411 | 375          | 673          | 0.557        |
-| Chet Holmgren      | 82 | 2,413 | 352          | 666          | 0.529        |
-| Nikola Jokic       | 79 | 2,737 | 425          | 657          | 0.647        |
-| Domantas Sabonis   | 82 | 2,928 | 364          | 621          | 0.586        |
-| Rudy Gobert        | 76 | 2,593 | 292          | 591          | 0.494        |
-| ⋮ | ⋮ | ⋮ | ⋮ | ⋮ | &#8942; |
-| Aleksej Pokusevski | 28 | 405   | 54           | 81           | 0.667        |
-| Bol Bol            | 43 | 469   | 34           | 76           | 0.447        |
-| Neemias Queta      | 28 | 333   | 39           | 73           | 0.534        |
-| DeAndre Jordan     | 36 | 396   | 43           | 67           | 0.642        |
-| Ibou Badji         | 22 | 226   | 35           | 56           | 0.625        |
+Field goal efficiency is used as the measure of rim defense in this section. Below is a snippet of the data evaluated, sorted by defended FGA descending.
+
+| Player             | GP      | MP      | D FGM   | D FGA &#9660; | D FG%   |
+|:-------------------|:-------:|:-------:|:-------:|:-------------:|:-------:|
+| Brook Lopez        | 79      | 2,411   | 375     | 673           | 0.557   |
+| Chet Holmgren      | 82      | 2,413   | 352     | 666           | 0.529   |
+| Nikola Jokic       | 79      | 2,737   | 425     | 657           | 0.647   |
+| &#8942;            | &#8942; | &#8942; | &#8942; | &#8942;       | &#8942; |
+| Victor Wembanyama  | 71      | 2,106   | 314     | 586           | 0.536   |
+| &#8942;            | &#8942; | &#8942; | &#8942; | &#8942;       | &#8942; |
+| Zach Collins       | 69      | 1,526   | 253     | 424           | 0.597   |
+| &#8942;            | &#8942; | &#8942; | &#8942; | &#8942;       | &#8942; |
+| Neemias Queta      | 28      | 333     | 39      | 73            | 0.534   |
+| DeAndre Jordan     | 36      | 396     | 43      | 67            | 0.642   |
+| Ibou Badji         | 22      | 226     | 35      | 56            | 0.625   |
+[NBA Stats Query](https://www.nba.com/stats/players/defense-dash-lt6?SeasonType=Regular+Season&PerMode=Totals)
 
 
 ## Rim Rebounding
