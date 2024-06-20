@@ -25,9 +25,11 @@ Field goals included are those within 6 feet of the rim. This distance was selec
 ## Rim Defense
 
 
-Field goal efficiency is used as the measure of rim defense in this section. Below is a snippet of the data evaluated, sorted by defended FGA descending.
+Field goal efficiency is used as the measure of rim defense in this section. Below is a snippet of the data[^rim_defense_query] queried, sorted by defended FGA descending.
 
-| Player             | GP      | MP      | D FGM   | D FGA &#9660; | D FG%   |
+[^rim_defense_query]: [NBA Stats Query](https://www.nba.com/stats/players/defense-dash-lt6?SeasonType=Regular+Season&PerMode=Totals)
+
+| Player             | GP      | MP      | DFGM    | DFGA &#9660;  | DFG%    |
 |:-------------------|:-------:|:-------:|:-------:|:-------------:|:-------:|
 | Brook Lopez        | 79      | 2,411   | 375     | 673           | 0.557   |
 | Chet Holmgren      | 82      | 2,413   | 352     | 666           | 0.529   |
@@ -41,8 +43,28 @@ Field goal efficiency is used as the measure of rim defense in this section. Bel
 | DeAndre Jordan     | 36      | 396     | 43      | 67            | 0.642   |
 | Ibou Badji         | 22      | 226     | 35      | 56            | 0.625   |
 
-[NBA Stats Query](https://www.nba.com/stats/players/defense-dash-lt6?SeasonType=Regular+Season&PerMode=Totals)
 
+![Rim Defense Scatter](https://williamscale.github.io/attachments/shot-diet-defense-centers/rim_defense_scatter1.png)
+
+Collins is in the middle of the pack with both defended FGA and defended FG%, while Wembanyama has a lower FG% at a higher volume of attempts. Normalized by minutes played, however, Collins and Wembanyama have identical defended FGA rates.
+
+![Rim Defense Scatter Norm](https://williamscale.github.io/attachments/shot-diet-defense-centers/rim_defense_scatter2.png)
+
+Including blocks into the analysis is a bit tougher because I don't know of any publicly available data that shows where a block happened on the court. Wembanyama probably blocks more jump shots than the other players in this dataset, so assuming all blocks are at the rim would be overestimating his rim block rate. However, until more granular data is available, this is what I have to work with. Therefore, I calculate a block rate as $BLK% = BLK / DFGA$.
+
+| Rank    | Player            | BLK     | DFGA    | BLK% &#9660; |
+|:-------:|:------------------|:-------:|:-------:|:------------:|
+| 1       | Jonathan Isaac    | 70      | 154     | 0.455        |
+| 2       | Victor Wembanyama | 254     | 586     | 0.433        |
+| 3       | Walker Kessler    | 154     | 402     | 0.383        |
+| &#8942; | &#8942;           | &#8942; | &#8942; | &#8942;      |
+| 53      | Zach Collins      | 52      | 424     | 0.123        |
+| &#8942; | &#8942;           | &#8942; | &#8942; | &#8942;      |
+| 70      | Lauri Markkanen   | 26      | 341     | 0.076        |
+| 71      | Danilo Gallinari  | 6       | 122     | 0.049        |
+| 72      | Dario Saric       | 10      | 289     | 0.035        |
+
+![Block Rate Scatter](https://williamscale.github.io/attachments/shot-diet-defense-centers/rim_defense_scatter3.png)
 
 ## Rim Rebounding
 
