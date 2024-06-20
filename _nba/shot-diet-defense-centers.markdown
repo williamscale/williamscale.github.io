@@ -40,6 +40,7 @@ Field goal efficiency is used as the measure of rim defense in this section. Bel
 | Neemias Queta      | 28      | 333     | 39      | 73            | 0.534   |
 | DeAndre Jordan     | 36      | 396     | 43      | 67            | 0.642   |
 | Ibou Badji         | 22      | 226     | 35      | 56            | 0.625   |
+
 [NBA Stats Query](https://www.nba.com/stats/players/defense-dash-lt6?SeasonType=Regular+Season&PerMode=Totals)
 
 
