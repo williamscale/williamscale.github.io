@@ -33,9 +33,7 @@ Field goals included are those within 6 feet of the rim. This distance was selec
 also do a fg% vs distance from basket average (will require scraping all shots I think) then vw and zc averages. so line graph with 3 lines, xaxis is distance, y axis is fg%.
 
 
-Field goal efficiency is used as the measure of rim defense in this section. Below is a snippet of the data[^rim_defense_query] queried, sorted by defended FGA descending.
-
-[^rim_defense_query]: [NBA Stats Query](https://www.nba.com/stats/players/defense-dash-lt6?SeasonType=Regular+Season&PerMode=Totals)
+Field goal efficiency is used as the measure of rim defense in this section. Below is a snippet of the [data queried](https://www.nba.com/stats/players/defense-dash-lt6?SeasonType=Regular+Season&PerMode=Totals), sorted by defended FGA descending.
 
 | Player             | GP      | MP      | DFGM    | DFGA &#9660;  | DFG%    |
 |:-------------------|:-------:|:-------:|:-------:|:-------------:|:-------:|
@@ -76,9 +74,7 @@ Including blocks into the analysis is a bit tougher because I don't know of any 
 
 ## Rim Rebounding
 
-Finally, to finish the defensive possession, the team must get a defensive rebound. If a player leaves his feet for a block attempt and misses, he may have altered the shot enough to force a miss, but be more susceptible to giving up an easy offensive rebound and putback. Thus, I think defensive rebounding should be a factor in rim protection evaluation. The NBA has stats on contested vs. uncontested rebounds. It defines a contested rebound as one in which an opponent is within 3.5 feet of the rebounder[^contested_reb_def]. An assumption I'm making in this section is that each missed FGA near the rim results in an available contested rebound. 
-
-[^contested_reb_def]: [Contested Rebound Definition](https://www.nba.com/stats/help/glossary#contested_dreb)
+Finally, to finish the defensive possession, the team must get a defensive rebound. If a player leaves his feet for a block attempt and misses, he may have altered the shot enough to force a miss, but be more susceptible to giving up an easy offensive rebound and putback. Thus, I think defensive rebounding should be a factor in rim protection evaluation. The NBA has stats on [contested vs. uncontested rebounds](https://www.nba.com/stats/help/glossary#contested_dreb). It defines a contested rebound as one in which an opponent is within 3.5 feet of the rebounder. An assumption I'm making in this section is that each missed FGA near the rim results in an available contested rebound. 
 
 Then I calculate a contested defensive rebound rate as:
 
@@ -100,7 +96,7 @@ $$
 | 71      | Ibou Badji        | 1              | 0.048                   |
 | 72      | Davis Bertans     | 0              | 0.000                   |
 
-I then combined *rim defense* and *rim rebounding* to create a success rate of rim FGA.
+I then combined **rim defense** and **rim rebounding** to create a success rate of rim FGA. In other words, of the shots attempted at the rim, the success rate is the rate at which the attempted shot is both missed and rebounded by the player. This is not a perfect approach. How often does a player both contest a shot and get the rebound?
 
 $$
 DFGA Success Rate = (DFGA - DFGM + CDREB) / DFGA
