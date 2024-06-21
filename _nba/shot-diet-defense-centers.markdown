@@ -76,7 +76,7 @@ Including blocks into the analysis is a bit tougher because I don't know of any 
 
 ## Rim Rebounding
 
-Finally, to finish the defensive possession, the team must get a defensive rebound. If a player leaves his feet for a block attempt and misses, he may have altered the shot enough to force a miss, but be more susceptible to giving up an easy offensive rebound and putback. Thus, I think defensive rebounding should be a factor in rim protection evaluation. The NBA has stats on contested vs. uncontested rebounds. It defines a contested rebound as one in which an opponent is within 3.5 feet of the rebounder[^contested_reb_def]. An assumption I'm making in this section is that each missed FGA near the rim results in a contested rebound. 
+Finally, to finish the defensive possession, the team must get a defensive rebound. If a player leaves his feet for a block attempt and misses, he may have altered the shot enough to force a miss, but be more susceptible to giving up an easy offensive rebound and putback. Thus, I think defensive rebounding should be a factor in rim protection evaluation. The NBA has stats on contested vs. uncontested rebounds. It defines a contested rebound as one in which an opponent is within 3.5 feet of the rebounder[^contested_reb_def]. An assumption I'm making in this section is that each missed FGA near the rim results in an available contested rebound. 
 
 [^contested_reb_def]: [Contested Rebound Definition](https://www.nba.com/stats/help/glossary#contested_dreb)
 
@@ -99,6 +99,26 @@ $$
 | 70      | Chimezie Metu     | 4              | 0.071                   |
 | 71      | Ibou Badji        | 1              | 0.048                   |
 | 72      | Davis Bertans     | 0              | 0.000                   |
+
+I then combined *rim defense* and *rim rebounding* to create a success rate of rim FGA.
+
+$$
+DFGA Success Rate = (DFGA - DFGM + CDREB) / DFGA
+$$
+
+| Rank    | Player             | DFGA    | DFGM    | CDREB   | DFGA Success Rate &#9660; | 
+|:-------:|:-------------------|:-------:|:-------:|:-------:|:-------------------------:|
+| 1       | Bol Bol            | 76      | 34      | 7       | 0.645                     |
+| 2       | Jonathan Isaac     | 154     | 73      | 9       | 0.584                     |
+| 3       | Ivica Zubac        | 448     | 232     | 43      | 0.578                     |
+| &#8942; | &#8942;            | &#8942; | &#8942; | &#8942; | &#8942;                   |
+| 5       | Victor Wembanyama  | 586     | 314     | 63      | 0.572                     |
+| &#8942; | &#8942;            | &#8942; | &#8942; | &#8942; | &#8942;                   |
+| 45      | Zach Collins       | 424     | 253     | 29      | 0.472                     |
+| &#8942; | &#8942;            | &#8942; | &#8942; | &#8942; | &#8942;                   |
+| 70      | Davis Bertans      | 95      | 60      | 0       | 0.368                     |
+| 71      | Mitchell Robinson  | 148     | 104     | 10      | 0.365                     |
+| 72      | Aleksej Pokusevski | 81      | 54      | 2       | 0.358                     |
 
 <!-- First, I scraped all field goal attempts by Spurs opponents with their outcome, timestamps, and coordinates. I then scraped the Spurs rotations and filtered the dataset to include only field goal attempts with one of, but not both, Wembanyama or Collins on the court. Finally, I calculated the distance of the shot and removed all attempts further than 6 feet from the rim. This value was chosen in order to coincide with the NBA's stats defense dashboard demarcations. I'll refer to the remaining FGA as "rim FGA" since they are near the basket.
 
