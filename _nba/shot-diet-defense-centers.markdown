@@ -26,7 +26,21 @@ Field goals included are those within 6 feet of the rim. This distance was selec
 
 ## Rim Deterrence
 
+For rim deterrence, I'm ignoring the outcome of each FGA. That will be covered in the rim defense section.
 
+First, I scraped all field goal attempts by Spurs opponents with their outcome, timestamps, and coordinates. I then scraped the Spurs rotations and filtered the dataset to include only field goal attempts with one of, but not both, Wembanyama or Collins on the court. Finally, I calculated the distance of the shot and removed all attempts further than 6 feet from the rim. This value was chosen in order to coincide with the NBA's stats defense dashboard demarcations. I'll refer to the remaining FGA as "rim FGA" since they are near the basket. These shots are not necessarily defended by Wembanyama or Collins, they just occur with one of them on the court.
+
+| Player            | Opponent FGA | Opponent Rim FGA | Opponent Rim Rate |
+|:------------------|:------------:|:----------------:|:-----------------:|
+| Victor Wembanyama | 4,088        | 1,203            | 0.370             |
+| Zach Collins      | 2,958        | 748              | 0.353             |
+
+Opponents take slightly fewer shots at the rim (about 1.5 a game) with Collins than Wembanyama. I did not expect this. Of course, other personnel matters and it's just a small piece of the puzzle. Incorporating contested rim FGA yields:
+
+| Player            | Opponent Rim FGA | Defended Rim FGA | Rim Contest Rate |
+|:------------------|:----------------:|:----------------:|:----------------:|
+| Victor Wembanyama | 1,203            | 586              | 0.487            |
+| Zach Collins      | 748              | 424              | 0.567            |
 
 ## Rim Defense
 
