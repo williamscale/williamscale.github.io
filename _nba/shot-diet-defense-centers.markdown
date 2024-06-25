@@ -34,18 +34,25 @@ First, I scraped all field goal attempts by Spurs opponents with their outcome, 
 |:------------------|:------------:|:----------------:|:-----------------:|
 | Victor Wembanyama | 4,088        | 1,203            | 0.370             |
 | Zach Collins      | 2,958        | 748              | 0.353             |
+| Both              | 839          | 297              | 0.354             |
 
-Opponents take slightly fewer shots at the rim (about 1.5 a game) with Collins than Wembanyama. I did not expect this. Of course, other personnel matters and it's just a small piece of the puzzle. Incorporating contested rim FGA yields:
+Opponents take slightly fewer shots at the rim with Collins than Wembanyama. I did not expect this. Of course, other personnel matters and it's just a small piece of the puzzle. Below is the rate by distance for Wembanyama, Collins, and the league average.
 
-| Player            | Opponent Rim FGA | Defended Rim FGA | Rim Contest Rate |
-|:------------------|:----------------:|:----------------:|:----------------:|
-| Victor Wembanyama | 1,203            | 586              | 0.487            |
-| Zach Collins      | 748              | 424              | 0.567            |
+![Distance Proportion](https://williamscale.github.io/attachments/shot-diet-defense-centers/dist_prop_all.png)
+![Distance Proportion Rim](https://williamscale.github.io/attachments/shot-diet-defense-centers/dist_prop_rim.png)
+
+
 
 ## Rim Defense
 
 also do a fg% vs distance from basket average (will require scraping all shots I think) then vw and zc averages. so line graph with 3 lines, xaxis is distance, y axis is fg%.
 
+I don't have contested FGA data by lineup so to incorporate it, I've included possessions in which both Wembanyama and Collins are on the floor together. Rim attempts are contested at about the same rate, but again Collins has a slight edge.
+
+| Player            | Opponent Rim FGA    | Defended Rim FGA | Rim Contest Rate |
+|:------------------|:-------------------:|:----------------:|:----------------:|
+| Victor Wembanyama | 1,203 + 297 = 1,500 | 586              | 0.391            |
+| Zach Collins      | 748 + 297 = 1,045   | 424              | 0.406            |
 
 Field goal efficiency is used as the measure of rim defense in this section. Below is a snippet of the [data queried](https://www.nba.com/stats/players/defense-dash-lt6?SeasonType=Regular+Season&PerMode=Totals), sorted by defended FGA descending.
 
