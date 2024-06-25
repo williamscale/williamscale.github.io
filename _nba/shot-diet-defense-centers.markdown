@@ -3,13 +3,13 @@ layout: nba
 title: 2023-24 Spurs Center Rim Protection
 ---
 
-In this project, I will investigate the rim protection of <span style="color:#EF426F">Victor Wembanyama</span> and <span style="color:#00B2A9">Zach Collins</span>. Much of my approach is derived from Seth Partnow's thought process in this [interview](https://www.nytimes.com/athletic/1870696/2020/06/15/evaluation-orlando-magic-rim-protection/). Like Seth, I split up rim protection into *rim deterrence* and *rim defense*. Additionally, I explored defensive rebounding as another aspect of rim protection. 
+In this project, I will investigate the rim protection of <span style="color:#EF426F">Victor Wembanyama</span> and <span style="color:#00B2A9">Zach Collins</span>. Much of my approach is derived from Seth Partnow's thought process in this [interview](https://www.nytimes.com/athletic/1870696/2020/06/15/evaluation-orlando-magic-rim-protection/).
 
-Essentially, I've broked rim protection up into 3 steps:
+Essentially, I've broken rim protection into 3 steps:
 
-1. limit rim fga (*rim deterrence*)
-2. force missed fga near the rim (*rim defense*)
-3. gain possession of missed fga near the rim (*defensive rebounding*)
+1. Limit rim FGA (**rim deterrence**)
+2. Force missed rim FGA (**rim defense**)
+3. Gain possession of missed rim FGA (**defensive rebounding**)
 
 ## Data
 
@@ -28,7 +28,7 @@ Field goals included are those within 6 feet of the rim. This distance was selec
 
 For rim deterrence, I'm ignoring the outcome of each FGA. That will be covered in the rim defense section.
 
-First, I scraped all field goal attempts by Spurs opponents with their outcome, timestamps, and coordinates. I then scraped the Spurs rotations and filtered the dataset to include only field goal attempts with one of, but not both, Wembanyama or Collins on the court. Finally, I calculated the distance of the shot and removed all attempts further than 6 feet from the rim. This value was chosen in order to coincide with the NBA's stats defense dashboard demarcations. I'll refer to the remaining FGA as "rim FGA" since they are near the basket. These shots are not necessarily defended by Wembanyama or Collins, they just occur with one of them on the court.
+First, I scraped all field goal attempts by Spurs opponents with their outcome, timestamps, and coordinates. I then scraped the Spurs rotations and filtered the dataset to include only field goal attempts with at least one of Wembanyama and Collins on the court. Finally, I calculated the distance of the shot and removed all attempts further than 6 feet from the rim. I'll refer to these FGA as "rim FGA" since they are near the basket. These shots are not necessarily defended by Wembanyama or Collins, they just occur with one of them on the court.
 
 | Player            | Opponent FGA | Opponent Rim FGA | Opponent Rim Rate |
 |:------------------|:------------:|:----------------:|:-----------------:|
@@ -38,10 +38,9 @@ First, I scraped all field goal attempts by Spurs opponents with their outcome, 
 
 Below is the rate by distance for Wembanyama, Collins, and the league average. Wembanyama has higher rates than Collins and league average until 5 feet out.
 
-![Distance Proportion](https://williamscale.github.io/attachments/shot-diet-defense-centers/dist_prop_all.png)
 ![Distance Proportion Rim](https://williamscale.github.io/attachments/shot-diet-defense-centers/dist_prop_rim.png)
 
-Opponents take slightly fewer shots at the rim with Collins than Wembanyama. I did not expect this. Of course, other personnel matters and it's just a small piece of the puzzle. I would be interested in seeing the same data with other centers around the league to see if there are any outliers. Incorporating perimeter defenders into the equation may also reveal interesting results. Perhaps centers with lower opponent rim rates are playing alongside better defenders with lower blow-by rates, screen navigation, etc.
+Opponents take slightly fewer shots at the rim with Collins than Wembanyama. I did not expect this. Of course, other personnel matters and it's just a small piece of the puzzle. I would be interested in seeing the same data with other centers around the league to see if there are any outliers. Incorporating perimeter defenders into the equation may also reveal interesting results. Perhaps centers with lower opponent rim rates are playing alongside better defenders with lower blow-by rates, screen navigation, etc. Gameplan is also a factor here. The Spurs may be running ballhandlers off the 3-point line, funneling them into Wembanyama near the rim.
 
 ## Rim Defense
 
@@ -79,7 +78,7 @@ Below is the opponent efficiency by distance. So although more rim attempts occu
 
 ![Rim Defense Scatter Norm](https://williamscale.github.io/attachments/shot-diet-defense-centers/dist_eff.png)
 
-Including blocks into the analysis is a bit tougher because I don't know of any publicly available data that shows where a block happened on the court. Wembanyama probably blocks more jump shots than the other players in this dataset, so assuming all blocks are at the rim would be overestimating his rim block rate. However, until more granular data is available, this is what I have to work with. Therefore, I calculate a block rate as BLK% = BLK / DFGA
+Including blocks into the analysis is a bit tougher because I don't know of any publicly available data that shows where a block happened on the court. Wembanyama probably blocks more jump shots than the other players in this dataset, so assuming all blocks are at the rim would be overestimating his rim block rate. However, until more granular data is available, this is what I have to work with. Therefore, I calculate a block rate as BLK% = BLK / DFGA.
 
 | Rank    | Player            | BLK     | DFGA    | BLK% &#9660; |
 |:-------:|:------------------|:-------:|:-------:|:------------:|
@@ -95,6 +94,8 @@ Including blocks into the analysis is a bit tougher because I don't know of any 
 
 ![Block Rate Scatter](https://williamscale.github.io/attachments/shot-diet-defense-centers/rim_defense_scatter3.png)
 
+Wembanyama is an outlier with that block rate at such a high volume.
+
 ## Rim Rebounding
 
 Finally, to finish the defensive possession, the team must get a defensive rebound. If a player leaves his feet for a block attempt and misses, he may have altered the shot enough to force a miss, but be more susceptible to giving up an easy offensive rebound and putback. Thus, I think defensive rebounding should be a factor in rim protection evaluation. The NBA has stats on [contested vs. uncontested rebounds](https://www.nba.com/stats/help/glossary#contested_dreb). It defines a contested rebound as one in which an opponent is within 3.5 feet of the rebounder. An assumption I'm making in this section is that each missed FGA near the rim results in an available contested rebound. 
@@ -104,6 +105,8 @@ Then I calculate a contested defensive rebound rate as:
 $$
 C_DREB.Rate = C_DREB / (DFGA - DFGM)
 $$
+
+Since a contested rebound could come from an attempt that another player defended, this metric could be $>1$. And as $DFG%$ increases, C_DREB.Rate increases.
 
 | Rank    | Player            | Contested DREB | Contested DREB% &#9660; | 
 |:-------:|:------------------|:--------------:|:-----------------------:|
@@ -118,6 +121,8 @@ $$
 | 70      | Chimezie Metu     | 4              | 0.071                   |
 | 71      | Ibou Badji        | 1              | 0.048                   |
 | 72      | Davis Bertans     | 0              | 0.000                   |
+
+## Summary
 
 I then combined **rim defense** and **rim rebounding** to create a success rate of rim FGA. In other words, of the shots attempted at the rim, the success rate is the rate at which the attempted shot is both missed and rebounded by the player. This is not a perfect approach. How often does a player both contest a shot and get the rebound?
 
