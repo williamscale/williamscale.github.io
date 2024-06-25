@@ -36,16 +36,14 @@ First, I scraped all field goal attempts by Spurs opponents with their outcome, 
 | Zach Collins      | 2,958        | 748              | 0.353             |
 | Both              | 839          | 297              | 0.354             |
 
-Opponents take slightly fewer shots at the rim with Collins than Wembanyama. I did not expect this. Of course, other personnel matters and it's just a small piece of the puzzle. Below is the rate by distance for Wembanyama, Collins, and the league average.
+Below is the rate by distance for Wembanyama, Collins, and the league average. Wembanyama has higher rates than Collins and league average until 5 feet out.
 
 ![Distance Proportion](https://williamscale.github.io/attachments/shot-diet-defense-centers/dist_prop_all.png)
 ![Distance Proportion Rim](https://williamscale.github.io/attachments/shot-diet-defense-centers/dist_prop_rim.png)
 
-
+Opponents take slightly fewer shots at the rim with Collins than Wembanyama. I did not expect this. Of course, other personnel matters and it's just a small piece of the puzzle. I would be interested in seeing the same data with other centers around the league to see if there are any outliers. Incorporating perimeter defenders into the equation may also reveal interesting results. Perhaps centers with lower opponent rim rates are playing alongside better defenders with lower blow-by rates, screen navigation, etc.
 
 ## Rim Defense
-
-also do a fg% vs distance from basket average (will require scraping all shots I think) then vw and zc averages. so line graph with 3 lines, xaxis is distance, y axis is fg%.
 
 I don't have contested FGA data by lineup so to incorporate it, I've included possessions in which both Wembanyama and Collins are on the floor together. Rim attempts are contested at about the same rate, but again Collins has a slight edge.
 
@@ -76,6 +74,10 @@ Field goal efficiency is used as the measure of rim defense in this section. Bel
 Collins is in the middle of the pack with both defended FGA and defended FG%, while Wembanyama has a lower FG% at a higher volume of attempts. Normalized by minutes played, however, Collins and Wembanyama have identical defended FGA rates.
 
 ![Rim Defense Scatter Norm](https://williamscale.github.io/attachments/shot-diet-defense-centers/rim_defense_scatter2.png)
+
+Below is the opponent efficiency by distance. So although more rim attempts occur with Wembanyama on the court, they are made at a lower rate.
+
+![Rim Defense Scatter Norm](https://williamscale.github.io/attachments/shot-diet-defense-centers/dist_eff.png)
 
 Including blocks into the analysis is a bit tougher because I don't know of any publicly available data that shows where a block happened on the court. Wembanyama probably blocks more jump shots than the other players in this dataset, so assuming all blocks are at the rim would be overestimating his rim block rate. However, until more granular data is available, this is what I have to work with. Therefore, I calculate a block rate as BLK% = BLK / DFGA
 
