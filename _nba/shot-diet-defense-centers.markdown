@@ -5,9 +5,9 @@ title: 2023-24 Spurs Center Rim Protection
 
 Display math:
 
-```math
-E = mc^2
-```
+$$
+x+y = z^2
+$$
 
 Inline math: $`a^2 + b^2 = c^2`$.
 
