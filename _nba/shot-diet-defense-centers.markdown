@@ -16,7 +16,7 @@ Essentially, I've broken rim protection into 3 steps:
 All data comes from [NBA Stats](https://www.nba.com/stats/) and is scraped via the [hoopR package](https://hoopr.sportsdataverse.org/).
 
 Player stats were limited to players in the 2023-24 NBA season who
-* played in at least 30 games,
+* played in at least 20 games,
 * averaged at least 10 minutes per game, and
 * are 6'10" or taller.
 
@@ -53,20 +53,19 @@ I don't have contested FGA data by lineup so to incorporate it, I've included po
 
 Field goal efficiency is used as the measure of rim defense in this section. Below is a snippet of the [data queried](https://www.nba.com/stats/players/defense-dash-lt6?SeasonType=Regular+Season&PerMode=Totals), sorted by defended FGA descending.
 
-| Player             | GP      | MP      | DFGM    | DFGA &#9660;  | DFG%    |
-|:-------------------|:-------:|:-------:|:-------:|:-------------:|:-------:|
-| Brook Lopez        | 79      | 2,411   | 375     | 673           | 0.557   |
-| Chet Holmgren      | 82      | 2,413   | 352     | 666           | 0.529   |
-| Nikola Jokic       | 79      | 2,737   | 425     | 657           | 0.647   |
-| &#8942;            | &#8942; | &#8942; | &#8942; | &#8942;       | &#8942; |
-| Victor Wembanyama  | 71      | 2,106   | 314     | 586           | 0.536   |
-| &#8942;            | &#8942; | &#8942; | &#8942; | &#8942;       | &#8942; |
-| Zach Collins       | 69      | 1,526   | 253     | 424           | 0.597   |
-| &#8942;            | &#8942; | &#8942; | &#8942; | &#8942;       | &#8942; |
-| Neemias Queta      | 28      | 333     | 39      | 73            | 0.534   |
-| DeAndre Jordan     | 36      | 396     | 43      | 67            | 0.642   |
-| Ibou Badji         | 22      | 226     | 35      | 56            | 0.625   |
-
+| Rank    | Player             | GP      | MP      | DFGM    | DFGA    | DFG% &#9650; |
+|:-------:|:-------------------|:-------:|:-------:|:-------:|:-------:|:------------:|
+| 1       | Bol Bol            | 43      | 469     | 34      | 76      | 0.447        |
+| 2       | Jonathan Isaac     | 58      | 915     | 73      | 154     | 0.474        |
+| 3       | Rudy Gobert        | 76      | 2,593   | 292     | 591     | 0.494        |
+| &#8942; | &#8942;            | &#8942; | &#8942; | &#8942; | &#8942; | &#8942;      |
+| 12      | Victor Wembanyama  | 71      | 2,106   | 314     | 586     | 0.536        |
+| &#8942; | &#8942;            | &#8942; | &#8942; | &#8942; | &#8942; | &#8942;      |
+| 42      | Zach Collins       | 69      | 1,526   | 253     | 424     | 0.597        |
+| &#8942; | &#8942;            | &#8942; | &#8942; | &#8942; | &#8942; | &#8942;      |
+| 70      | Aleksej Pokusevski | 28      | 405     | 54      | 81      | 0.667        |
+| 71      | Omer Yurtseven     | 48      | 545     | 78      | 116     | 0.672        |
+| 72      | Mitchell Robinson  | 31      | 768     | 104     | 148     | 0.703        |
 
 ![Rim Defense Scatter](https://williamscale.github.io/attachments/shot-diet-defense-centers/rim_defense_scatter1.png)
 
