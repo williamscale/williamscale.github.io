@@ -3,10 +3,14 @@ layout: nba
 title: 2023-24 Spurs Center Rim Protection
 ---
 
- {% raw %}
-  $$a^2 + b^2 = c^2$$ --> note that all equations between these tags will not need escaping! 
- {% endraw %}
- 
+Display math:
+
+```math
+E = mc^2
+```
+
+Inline math: $`a^2 + b^2 = c^2`$.
+
 In this project, I will investigate the rim protection of <span style="color:#EF426F">Victor Wembanyama</span> and <span style="color:#00B2A9">Zach Collins</span>. Much of my approach is derived from Seth Partnow's thought process in this [interview](https://www.nytimes.com/athletic/1870696/2020/06/15/evaluation-orlando-magic-rim-protection/).
 
 Essentially, I've broken rim protection into 3 steps:
