@@ -125,7 +125,7 @@ The top three players on this list are not thought of as rim protectors. In the 
 
 ## Summary
 
-The joint probability of Wembanyama forcing a missing rim attempt can be given by: 
+The joint probability of Wembanyama forcing a missed rim attempt can be given by: 
 
 $$
 \begin{aligned}
@@ -134,7 +134,19 @@ $$
 &= \frac{1203+297}{4088+839} \times \frac{586}{1500} \times (1 - \frac{314}{586}) \\
 &= 0.304 \times 0.391 \times (1 - 0.536) \\
 &= \boxed{0.055}
+\end{aligned}
 $$
 
+Similarly, Collins is shown by:
+
+$$
+\begin{aligned}
+\text{P(Wembanyama DFGA Miss)} &= \text{P(Rim FGA)} \times \text{P(Wembanyama Contest)} \times \text{P(Missed FGA)} \\
+&= \frac{\text{Rim FGA}}{\text{FGA}} \times \frac{\text{Defended Rim FGA}}{\text{Rim FGA}} \times (1 - \frac{\text{Defended Rim FGM}}{\text{Defended Rim FGA}}) \\
+&= \frac{748+297}{2958+839} \times \frac{424}{1045} \times (1 - \frac{253}{424}) \\
+&= 0.275 \times 0.406 \times (1 - 0.597) \\
+&= \boxed{0.045}
+\end{aligned}
+$$
 
 
