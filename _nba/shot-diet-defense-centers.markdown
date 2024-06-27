@@ -123,3 +123,18 @@ $$
 
 The top three players on this list are not thought of as rim protectors. In the proposed equation, DFG% and DREB% are directly correlated. I am curious to know how many of Towns's rim DREB come after shots defended by Rudy Gobert. Regardless, obtaining a rebound after a rim attempt should be valued and taken into account.
 
+## Summary
+
+The joint probability of Wembanyama forcing a missing rim attempt can be given by: 
+
+$$
+\begin{aligned}
+\text{P(Wembanyama DFGA Miss)} &= \text{P(Rim FGA)} \times \text{P(Wembanyama Contest)} \times \text{P(Missed FGA)} \\
+&= \frac{\text{Rim FGA}}{\text{FGA}} \times \frac{\text{Defended Rim FGA}}{\text{Rim FGA}} \times (1 - \frac{\text{Defended Rim FGM}}{\text{Defended Rim FGA}}) \\
+&= \frac{1203+297}{4088+839} \times \frac{586}{1500} \times (1 - \frac{314}{586}) \\
+&= 0.304 \times 0.391 \times (1 - 0.536) \\
+&= \boxed{0.055}
+$$
+
+
+
