@@ -3,14 +3,6 @@ layout: nba
 title: 2023-24 Spurs Center Rim Protection
 ---
 
-Display math:
-
-$$
-x+y = z^2
-$$
-
-Inline math: $`a^2 + b^2 = c^2`$.
-
 In this project, I will investigate the rim protection of <span style="color:#EF426F">Victor Wembanyama</span> and <span style="color:#00B2A9">Zach Collins</span>. Much of my approach is derived from Seth Partnow's thought process in this [interview](https://www.nytimes.com/athletic/1870696/2020/06/15/evaluation-orlando-magic-rim-protection/).
 
 Essentially, I've broken rim protection into 3 steps:
@@ -85,7 +77,7 @@ Below is the opponent efficiency by distance. So although more rim attempts occu
 
 ![Rim Defense Scatter Norm](https://williamscale.github.io/attachments/shot-diet-defense-centers/dist_eff.png)
 
-Including blocks into the analysis is a bit tougher because I don't know of any publicly available data that shows where a block happened on the court. Wembanyama probably blocks more jump shots than the other players in this dataset, so assuming all blocks are at the rim would be overestimating his rim block rate. However, until more granular data is available, this is what I have to work with. Therefore, I calculate a block rate as BLK% = BLK / DFGA.
+Including blocks into the analysis is a bit tougher because I don't know of any publicly available data that shows where a block happened on the court. Wembanyama probably blocks more jump shots than the other players in this dataset, so assuming all blocks are at the rim would be overestimating his rim block rate. However, until more granular data is available, this is what I have to work with. Therefore, I calculate a block rate as $\text{BLK%} = \frac{\text{BLK}}{\text{DFGA}}$.
 
 | Rank    | Player            | BLK     | DFGA    | BLK% &#9660; |
 |:-------:|:------------------|:-------:|:-------:|:------------:|
@@ -110,7 +102,7 @@ Finally, to finish the defensive possession, the team must get a defensive rebou
 I've scraped defensive rebounding data on rim FGA and calculated a defensive rim rebound rate as:
 
 $$
-DREB.Rate = Rim DREB / Available Rim DREB = Rim DREB / (DFGA - DFGM)
+\text{DREB%} = \frac{\text{DREB}}{\text{Available DREB}} = \frac{\text{DREB}}{\text{DFGA} - \text{DFGM}}
 $$
 
 | Rank    | Player             | DFGA    | DFGM    | Rim DREB | Rim DREB% &#9660; | 
