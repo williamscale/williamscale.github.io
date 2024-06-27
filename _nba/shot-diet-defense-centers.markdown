@@ -26,7 +26,7 @@ Field goals included are those within 6 feet of the rim. This distance was selec
 
 ## Rim Deterrence
 
-For rim deterrence, I'm ignoring the outcome of each FGA. That will be covered in the rim defense section.
+For rim deterrence, I'm ignoring the outcome of each FGA. That is covered in the rim defense section.
 
 First, I scraped all field goal attempts by Spurs opponents with their outcome, timestamps, and coordinates. I then scraped the Spurs rotations and filtered the dataset to include only field goal attempts with at least one of Wembanyama and Collins on the court. Finally, I calculated the distance of the shot and removed all attempts further than 6 feet from the rim. I'll refer to these FGA as "rim FGA" since they are near the basket. These shots are not necessarily defended by Wembanyama or Collins, they just occur with one of them on the court.
 
