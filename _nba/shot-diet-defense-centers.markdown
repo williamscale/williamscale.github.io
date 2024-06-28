@@ -125,32 +125,6 @@ The top three players on this list are not thought of as rim protectors. In the 
 
 ## Summary
 
-<!-- The joint probability of Wembanyama forcing a missed rim attempt can be given by: wait should this be 1-P(Rim FGA)
-
-$$
-\begin{aligned}
-\text{P(Wembanyama DFGA Miss)} &= \text{P(Rim FGA)} \times \text{P(Wembanyama Contest)} \times \text{P(Missed FGA)} \\
-&= \frac{\text{Rim FGA}}{\text{FGA}} \times \frac{\text{Defended Rim FGA}}{\text{Rim FGA}} \times \left( 1 - \frac{\text{Defended Rim FGM}}{\text{Defended Rim FGA}} \right) \\
-&= \frac{1203+297}{4088+839} \times \frac{586}{1500} \times \left( 1 - \frac{314}{586} \right) \\
-&= 0.304 \times 0.391 \times \left( 1 - 0.536 \right) \\
-&= \boxed{0.055}
-\end{aligned}
-$$
-
-Similarly, Collins is shown by:
-
-$$
-\begin{aligned}
-\text{P(Collins DFGA Miss)} &= \text{P(Rim FGA)} \times \text{P(Collins Contest)} \times \text{P(Missed FGA)} \\
-&= \frac{\text{Rim FGA}}{\text{FGA}} \times \frac{\text{Defended Rim FGA}}{\text{Rim FGA}} \times \left( 1 - \frac{\text{Defended Rim FGM}}{\text{Defended Rim FGA}} \right) \\
-&= \frac{748+297}{2958+839} \times \frac{424}{1045} \times \left( 1 - \frac{253}{424} \right) \\
-&= 0.275 \times 0.406 \times \left( 1 - 0.597 \right) \\
-&= \boxed{0.045}
-\end{aligned}
-$$
-
-Using this metric as a judge of rim protection is not perfect as it rewards higher rates of Rim FGA.  -->
-
 Although this analysis is not comprehensive, I found it useful to perform. Future work that I would like to include is scraping opponent field goal locations for all 72 players to obtain rim rates with them on the court as well as investigating foul rates. Collins committed 132 shooting fouls, a rate double Wembanyama's 90, when accounting for minutes played. Additionally, evaluating everything on a per possession basis may be a better comparison.
 
-
+Code can be found [here](https://github.com/williamscale/NBA/tree/master/R/Projects/ShotDiet_D).
