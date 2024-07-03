@@ -1,6 +1,6 @@
 ---
 layout: page
-title: bee
+<!-- title: bee -->
 <!-- permalink: /about/ -->
 ---
 
