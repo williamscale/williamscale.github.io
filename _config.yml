@@ -36,9 +36,9 @@ theme: minima
 plugins:
   - jekyll-feed
 
-header_pages:
-  - maps.markdown
-  - nba.markdown
+# header_pages:
+#   - maps.markdown
+#   - nba.markdown
 
 # Exclude from processing.
 # The following items will not be processed, by default.

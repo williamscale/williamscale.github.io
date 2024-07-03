@@ -1,5 +1,5 @@
 ---
-layout: page
+<!-- layout: page -->
 <!-- title: bee -->
 <!-- permalink: /about/ -->
 ---
