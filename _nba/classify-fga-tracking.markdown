@@ -18,8 +18,8 @@ This is fine for limited, small sample size analysis. The shot has been made and
 
 Others have mitigated this issue by using matching algorithms[^1] to align the data more accurately or taking larger time windows[^2] in their analyses. Instead, in this project, I attempt to classify field goals using unsupervised methods. Use cases may be analytics teams trying to cut film at the correct time stamps.
 
-[^1]: https://www.statsperform.com/wp-content/uploads/2021/04/Predicting-NBA-Talent-from-Enormous-Amounts-of-College-Basketball-Tracking-Data.pdf
-[^2]: https://dukespace.lib.duke.edu/server/api/core/bitstreams/ba5938d6-5455-4720-a018-4e7996e3f67d/content
+<!-- [^1]: https://www.statsperform.com/wp-content/uploads/2021/04/Predicting-NBA-Talent-from-Enormous-Amounts-of-College-Basketball-Tracking-Data.pdf
+[^2]: https://dukespace.lib.duke.edu/server/api/core/bitstreams/ba5938d6-5455-4720-a018-4e7996e3f67d/content -->
 
 ## Data Preparation
 
