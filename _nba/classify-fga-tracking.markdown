@@ -18,9 +18,6 @@ This is fine for limited, small sample size analysis. The shot has been made and
 
 Others have mitigated this issue by using matching algorithms to align the data more accurately or taking larger time windows in their analyses. Instead, in this project, I attempt to classify field goals using unsupervised methods.
 
-<!-- [^1]: https://www.statsperform.com/wp-content/uploads/2021/04/Predicting-NBA-Talent-from-Enormous-Amounts-of-College-Basketball-Tracking-Data.pdf
-[^2]: https://dukespace.lib.duke.edu/server/api/core/bitstreams/ba5938d6-5455-4720-a018-4e7996e3f67d/content -->
-
 ## Data Preparation
 
 Sorting through the data took some time, but essentially, it contains ball and player locations measured at 25 Hz and separated into "events". These events have IDs that align with the NBA's PBP data (hence the common joining approach). PBP data can be scraped via the [nba_api package](https://pypi.org/project/nba_api/). Tracking data corresponding to a single event ID sometimes includes field goal attempts by both teams. Additionally, tracking data includes information when the game clock isn't moving, like free throws or inbounds passes. If the referees add time back on the clock, timestamps are repeated with different spatial data.
