@@ -9,28 +9,23 @@ I stumbled on some [NBA tracking data](https://github.com/linouk23/NBA-Player-Mo
 
 ![PBP](https://williamscale.github.io/attachments/classify-fga-tracking/ex3.PNG)
 
-However, in the screenshots below, you can see that the field goal happens earlier than that.
+However, in the screenshots below, you can see that the field goal attempt (FGA) happens earlier than that.
 
 ![FGA Start](https://williamscale.github.io/attachments/classify-fga-tracking/ex1.PNG)
 ![FGA End](https://williamscale.github.io/attachments/classify-fga-tracking/ex2.PNG)
 
 This is fine for limited, small sample size analysis. The shot has been made and logged with 4:05 on the game clock. But if you wanted to extract tracking information on this field goal (or on all of the attempts in a game/season/career!), your data would consistently be off by a bit. I found that after joining the PBP data with the tracking data, I was viewing more rebounds and inbounds passes than actual field goal attempts. 
 
-Others have mitigated this issue by using matching algorithms[^1] to align the data more accurately or taking larger time windows[^2] in their analyses. Instead, in this project, I attempt to classify field goals using unsupervised methods. Use cases may be analytics teams trying to cut film at the correct time stamps.
+Others have mitigated this issue by using matching algorithms to align the data more accurately or taking larger time windows in their analyses. Instead, in this project, I attempt to classify field goals using unsupervised methods.
 
 <!-- [^1]: https://www.statsperform.com/wp-content/uploads/2021/04/Predicting-NBA-Talent-from-Enormous-Amounts-of-College-Basketball-Tracking-Data.pdf
 [^2]: https://dukespace.lib.duke.edu/server/api/core/bitstreams/ba5938d6-5455-4720-a018-4e7996e3f67d/content -->
 
 ## Data Preparation
 
-```python
-def unzip_7z(source_path, destination_path):
+Sorting through the data took some time, but essentially, it contains ball and player locations measured at 25 Hz and separated into "events". These events have IDs that align with the NBA's PBP data (hence the common joining approach). PBP data can be scraped via the [nba_api package](https://pypi.org/project/nba_api/). Tracking data corresponding to a single event ID sometimes includes field goal attempts by both teams. Additionally, tracking data includes information when the game clock isn't moving, like free throws or inbounds passes. If the referees add time back on the clock, timestamps are repeated with different spatial data.
 
-	with py7zr.SevenZipFile(source_path, mode = "r") as zipped_file:
-	    zipped_file.extractall(destination_path)
+drop duplicates already happened in view.py so why needed again?
 
-unzip_7z(
-	source_path = "./data/2016.NBA.Raw.SportVU.Game.Logs/10.28.2015.SAS.at.OKC.7z",
-	destination_path = "./data/games_json/"
-	)
-```
+## Feature Creation
+
