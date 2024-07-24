@@ -48,7 +48,7 @@ It appears the Spurs have gained possession, but actually this is in the middle 
 
 ### Ball Speed
 
-Firstly, I created distance travelled variables using Euclidean distance in 3D space and in the xy-plane. Dividing this distance by the time between measurements then gives ball speed. Following is an example calculation.
+Firstly, I created a distance travelled variable using Euclidean distance. Dividing this distance by the time between measurements then gives ball speed. Following is an example calculation.
 
 | Quarter | Game Clock | X       | Y       | Z       |
 |:-------:|:----------:|:-------:|:-------:|:-------:|
@@ -59,7 +59,7 @@ Firstly, I created distance travelled variables using Euclidean distance in 3D s
 
 $$
 \begin{aligned}
-\delta t &= t_{2} - t_{1} \\
+\Delta t &= t_{2} - t_{1} \\
 &= 43.97 - 43.93 \\
 &= 0.04
 \end{aligned}
@@ -67,7 +67,7 @@ $$
 
 $$
 \begin{aligned}
-\delta d &= \sqrt{\left( x_{2} - x_{1} \right)^{2} + \left( y_{2} - y_{1} \right)^{2} + \left( z_{2} - z_{1} \right)^{2}} \\
+\Delta d &= \sqrt{\left( x_{2} - x_{1} \right)^{2} + \left( y_{2} - y_{1} \right)^{2} + \left( z_{2} - z_{1} \right)^{2}} \\
 &= \sqrt{\left( 29.434 - 29.638 \right)^{2} + \left( 30.199 - 29.903 \right)^{2} + \left( 1.994 - 2.096 \right)^{2}} \\
 &= 0.374
 \end{aligned}
@@ -75,10 +75,24 @@ $$
 
 $$
 \begin{aligned}
-v &= \frac{\delta d}{\delta t} \\
+v &= \frac{\Delta d}{\Delta t} \\
 &= \frac{0.374}{0.04} \\
 &= 9.342
+\end{aligned}
+$$
+
+$$
 \begin{aligned}
+\Delta t &= t_{2} - t_{1} \\
+&= 43.97 - 43.93 \\
+&= 0.04
+\end{aligned}
+\qquad
+\begin{aligned}
+\Delta d &= \sqrt{\left( x_{2} - x_{1} \right)^{2} + \left( y_{2} - y_{1} \right)^{2} + \left( z_{2} - z_{1} \right)^{2}} \\
+&= \sqrt{\left( 29.434 - 29.638 \right)^{2} + \left( 30.199 - 29.903 \right)^{2} + \left( 1.994 - 2.096 \right)^{2}} \\
+&= 0.374
+\end{aligned}
 $$
 
 ### FGA $\theta$
