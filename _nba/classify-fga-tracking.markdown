@@ -35,9 +35,21 @@ I combined all the tracking data that was separated by event into a single dataf
 | 4 | 0.02 | [44.893, 25.914, 4.796] | [37.061, 7.769] | &#8230; | [39.394, 5.078] |
 
 
-Here is how this data would look on the court.
+Here is the data superimposed on the court.
 
 ![Court Scatter](https://williamscale.github.io/attachments/classify-fga-tracking/ex4.PNG)
 
+Although this data isn't labelled, it is evident the Thunder have possession and the Spurs are in standard halfcourt defensive positioning. Here is a similar scatter plot:
+
+![Court Scatter 2](https://williamscale.github.io/attachments/classify-fga-tracking/ex5.PNG)
+
+It appears the Spurs have gained possession, but actually this is in the middle of a [Kevin Durant jumper](https://www.nba.com/stats/events?CFID=&CFPARAMS=&GameEventID=43&GameID=0021500013&Season=2015-16&flag=1&title=Durant%2015%27%20Jump%20Shot%20(4%20PTS)%20(Westbrook%202%20AST)).
+
+Ball Z position could inform of field goal attempts better than solely X or Y positions.
+
 ## Feature Creation
+
+### Ball Speed
+
+### FGA $\theta$
 
