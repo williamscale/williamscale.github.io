@@ -22,7 +22,7 @@ Others have mitigated this issue by using matching algorithms to align the data 
 
 Sorting through the data took some time, but essentially, it contains ball and player locations measured at 25 Hz and separated into "events". These events have IDs that align with the NBA's PBP data (hence the common joining approach). PBP data can be scraped via the [nba_api package](https://pypi.org/project/nba_api/). Tracking data corresponding to a single event ID sometimes includes field goal attempts by both teams. Additionally, tracking data includes information when the game clock isn't moving, like free throws or inbounds passes. If the referees add time back on the clock, timestamps are repeated with different spatial data.
 
-I combined all the tracking data that was separated by event into a single dataframe and then removed duplicated timestamp rows. Below is a snippet of the dataset.
+I combined all the tracking data that was separated by event into a single dataframe and then removed duplicated timestamp rows. Below is a snippet of the dataset. Note that units are seconds and feet.
 
 | Quarter | Game Clock | Ball Position [X, Y, Z] | Player 1 Position [X, Y] | &#8230; | Player 10 Position [X, Y] |
 |:-:|:-:|:-:|:-:|:-:|:-:|
@@ -34,7 +34,6 @@ I combined all the tracking data that was separated by event into a single dataf
 | 4 | 0.06 | [45.462, 26.362, 5.141] | [37.191, 7.803] | &#8230; | [39.635, 5.071] |
 | 4 | 0.02 | [44.893, 25.914, 4.796] | [37.061, 7.769] | &#8230; | [39.394, 5.078] |
 
-
 Here is the data superimposed on the court.
 
 ![Court Scatter](https://williamscale.github.io/attachments/classify-fga-tracking/ex4.PNG)
@@ -43,13 +42,44 @@ Although this data isn't labelled, it is evident the Thunder have possession and
 
 ![Court Scatter 2](https://williamscale.github.io/attachments/classify-fga-tracking/ex5.PNG)
 
-It appears the Spurs have gained possession, but actually this is in the middle of a [Kevin Durant jumper](https://www.nba.com/stats/events?CFID=&CFPARAMS=&GameEventID=43&GameID=0021500013&Season=2015-16&flag=1&title=Durant%2015%27%20Jump%20Shot%20(4%20PTS)%20(Westbrook%202%20AST)).
-
-Ball Z position could inform of field goal attempts better than solely X or Y positions.
+It appears the Spurs have gained possession, but actually this is in the middle of a [Kevin Durant jumper](https://www.nba.com/stats/events?CFID=&CFPARAMS=&GameEventID=43&GameID=0021500013&Season=2015-16&flag=1&title=Durant%2015%27%20Jump%20Shot%20(4%20PTS)%20(Westbrook%202%20AST)) and the ball is going over the head of LaMarcus Aldridge. Ball Z position could inform of field goal attempts better than solely X or Y positions and is already available from the tracking data. A few more variables may be helpful too. 
 
 ## Feature Creation
 
 ### Ball Speed
+
+Firstly, I created distance travelled variables using Euclidean distance in 3D space and in the xy-plane. Dividing this distance by the time between measurements then gives ball speed. Following is an example calculation.
+
+| Quarter | Game Clock | X       | Y       | Z       |
+|:-------:|:----------:|:-------:|:-------:|:-------:|
+| &#8942; | &#8942;    | &#8942; | &#8942; | &#8942; |
+| 4       | 43.97      | 29.638  | 29.903  | 2.096   |
+| 4       | 43.93      | 29.434  | 30.199  | 1.994   |
+| &#8942; | &#8942;    | &#8942; | &#8942; | &#8942; |
+
+$$
+\begin{aligned}
+\delta t &= t_{2} - t_{1} \\
+&= 43.97 - 43.93 \\
+&= 0.04
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\delta d &= \sqrt{\left( x_{2} - x_{1} \right)^{2} + \left( y_{2} - y_{1} \right)^{2} + \left( z_{2} - z_{1} \right)^{2}} \\
+&= \sqrt{\left( 29.434 - 29.638 \right)^{2} + \left( 30.199 - 29.903 \right)^{2} + \left( 1.994 - 2.096 \right)^{2}} \\
+&= 0.374
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+v &= \frac{\delta d}{\delta t} \\
+&= \frac{0.374}{0.04} \\
+&= 9.342
+\begin{aligned}
+$$
 
 ### FGA $\theta$
 
