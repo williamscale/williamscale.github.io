@@ -81,9 +81,16 @@ v &= \frac{\Delta d}{\Delta t} \\
 \end{aligned}
 $$
 
-There were some outliers, probably due to missing data, so rows with ball speeds $> 50 \frac{ft}{s}$ were removed from the dataset. The distribution is shown below.
+There were some outliers, probably due to missing data, so rows with ball speeds $> 50 \frac{ft}{s}$ were removed from the dataset. This value was chosen arbitrarily and perhaps should be scrutinized more. The distribution is shown below.
 
-![Ball Speed Hist](https://williamscale.github.io/attachments/classify-fga-tracking/ballspeed_hist1.PNG)
+![Ball Speed Hist](https://williamscale.github.io/attachments/classify-fga-tracking/ballspeed_hist1.png)
 
-### FGA $\theta$
+### Ball Trajectory
+
+Next, I calculated the ball's trajectory relative to the direction of the closest basket as shown below.
+
+![Ball Traj](https://williamscale.github.io/attachments/classify-fga-tracking/traj1.png)
+
+## Classification
+
 
