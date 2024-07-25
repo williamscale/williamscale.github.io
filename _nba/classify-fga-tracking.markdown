@@ -119,9 +119,6 @@ The ball locations by cluster are shown below.
 ![Cluster2](https://williamscale.github.io/attachments/classify-fga-tracking/cluster_2.png)
 ![Cluster3](https://williamscale.github.io/attachments/classify-fga-tracking/cluster_3.png)
 
-<img src="https://williamscale.github.io/attachments/classify-fga-tracking/cluster_0.png" width="150" height="280">
-<img src="https://williamscale.github.io/attachments/classify-fga-tracking/cluster_1.png" width="150" height="280">
-<img src="https://williamscale.github.io/attachments/classify-fga-tracking/cluster_2.png" width="150" height="280">
-<img src="https://williamscale.github.io/attachments/classify-fga-tracking/cluster_3.png" width="150" height="280">
+It is evident that the model does a fairly good job of identifying field goal attempts. Cluster 1 is obviously made up of many shots, in addition to some non-shot datapoints. Further inspection is necessary.
 
-It is evident that the model does a fairly good job of identifying field goal attempts. Cluster 1 is obviously made up of many shots.
+Metrics by cluster are shown below.
