@@ -3,6 +3,8 @@ layout: nba
 title: Classifying FGA in Tracking Data
 ---
 
+This is in work.
+
 ## Problem
 
 I stumbled on some [NBA tracking data](https://github.com/linouk23/NBA-Player-Movements) recently and quickly realized that unlabelled tracking data would be significantly more difficult to work with than expected. As many people have done, I attempted to join the tracking data with play-by-play (PBP) data from the NBA. That works okay, but many of the PBP labels are a few seconds off. For example, in the Spurs' 2015-16 season opener against Oklahoma City, the [PBP log](https://www.nba.com/game/sas-vs-okc-0021500013/play-by-play?period=Q1) shows Manu Ginobili makes a jump shot with 4:05 remaining in the 1st quarter.
@@ -61,15 +63,13 @@ $$
 \begin{aligned}
 \Delta t &= t_{2} - t_{1} \\
 &= 43.97 - 43.93 \\
-&= 0.04
+&= 0.04 \text{seconds}
 \end{aligned}
-$$
-
-$$
+\qquad
 \begin{aligned}
 \Delta d &= \sqrt{\left( x_{2} - x_{1} \right)^{2} + \left( y_{2} - y_{1} \right)^{2} + \left( z_{2} - z_{1} \right)^{2}} \\
 &= \sqrt{\left( 29.434 - 29.638 \right)^{2} + \left( 30.199 - 29.903 \right)^{2} + \left( 1.994 - 2.096 \right)^{2}} \\
-&= 0.374
+&= 0.374 \text{feet}
 \end{aligned}
 $$
 
@@ -77,23 +77,13 @@ $$
 \begin{aligned}
 v &= \frac{\Delta d}{\Delta t} \\
 &= \frac{0.374}{0.04} \\
-&= 9.342
+&= 9.342 \frac{\text{ft}}{\text{s}}
 \end{aligned}
 $$
 
-$$
-\begin{aligned}
-\Delta t &= t_{2} - t_{1} \\
-&= 43.97 - 43.93 \\
-&= 0.04
-\end{aligned}
-\qquad
-\begin{aligned}
-\Delta d &= \sqrt{\left( x_{2} - x_{1} \right)^{2} + \left( y_{2} - y_{1} \right)^{2} + \left( z_{2} - z_{1} \right)^{2}} \\
-&= \sqrt{\left( 29.434 - 29.638 \right)^{2} + \left( 30.199 - 29.903 \right)^{2} + \left( 1.994 - 2.096 \right)^{2}} \\
-&= 0.374
-\end{aligned}
-$$
+There were some outliers, probably due to missing data, so rows with ball speeds $> 50 \frac{ft}{s}$ were removed from the dataset. The distribution is shown below.
+
+![Ball Speed Hist](https://williamscale.github.io/attachments/classify-fga-tracking/ballspeed_hist1.PNG)
 
 ### FGA $\theta$
 
