@@ -104,11 +104,9 @@ Any ball movement towards the basket, whether it be shots, passes, or dribbles, 
 
 I know there were 179 attempted field goals in the game and roughly when they occured via PBP data. I'm ignoring the PBP data though and treating this as an unlabelled dataset and, thus, using unsupervised methods to label the data. Additionally, the tracking data may include information that isn't a FGA in the box score, but looks like one (like a free throw or a missed jump shot in which the shooter drew a foul). I built a k-means classification model with the following variables:
 
-\begin{itemize}
-  \item ball z position,
-  \item ball speed,
-  \item and ball trajectory.
-\end{itemize}
+- ball z position,
+- ball speed,
+- and ball trajectory.
 
 All metrics were standardized to have a unit variance. After testing multiple values of $k$, I moved forward with $k=4$, as the elbow plot showed diminishing returns with more clusters.
 
@@ -120,5 +118,10 @@ The ball locations by cluster are shown below.
 ![Cluster1](https://williamscale.github.io/attachments/classify-fga-tracking/cluster_1.png)
 ![Cluster2](https://williamscale.github.io/attachments/classify-fga-tracking/cluster_2.png)
 ![Cluster3](https://williamscale.github.io/attachments/classify-fga-tracking/cluster_3.png)
+
+<img src="https://williamscale.github.io/attachments/classify-fga-tracking/cluster_0.png" width="150" height="280">
+<img src="https://williamscale.github.io/attachments/classify-fga-tracking/cluster_1.png" width="150" height="280">
+<img src="https://williamscale.github.io/attachments/classify-fga-tracking/cluster_2.png" width="150" height="280">
+<img src="https://williamscale.github.io/attachments/classify-fga-tracking/cluster_3.png" width="150" height="280">
 
 It is evident that the model does a fairly good job of identifying field goal attempts. Cluster 1 is obviously made up of many shots.
