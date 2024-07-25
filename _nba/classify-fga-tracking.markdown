@@ -89,7 +89,13 @@ There were some outliers, probably due to missing data, so rows with ball speeds
 
 Next, I calculated the ball's trajectory relative to the direction of the closest basket as shown below.
 
+$$
+\theta = \arccos{\frac{a \cdot b}{\norm{a} \norm{b}}}
+$$
+
 ![Ball Traj](https://williamscale.github.io/attachments/classify-fga-tracking/traj1.png)
+
+Any ball movement towards the basket, whether it be shots, passes, or dribbles, has a low $\theta$.
 
 ## Classification
 
