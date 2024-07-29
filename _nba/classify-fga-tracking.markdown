@@ -3,8 +3,6 @@ layout: nba
 title: Classifying FGA in Tracking Data
 ---
 
-This is in work.
-
 ## Problem
 
 In this project, I will use the Spurs vs. Thunder game on October 28, 2015 for examples and training the model.
@@ -64,13 +62,13 @@ $$
 \begin{aligned}
 \Delta t &= t_{2} - t_{1} \\
 &= 43.97 - 43.93 \\
-&= 0.04 \text{seconds}
+&= 0.04 \text{ seconds}
 \end{aligned}
 \qquad
 \begin{aligned}
 \Delta d &= \sqrt{\left( x_{2} - x_{1} \right)^{2} + \left( y_{2} - y_{1} \right)^{2} + \left( z_{2} - z_{1} \right)^{2}} \\
 &= \sqrt{\left( 29.434 - 29.638 \right)^{2} + \left( 30.199 - 29.903 \right)^{2} + \left( 1.994 - 2.096 \right)^{2}} \\
-&= 0.374 \text{feet}
+&= 0.374 \text{ feet}
 \end{aligned}
 $$
 
@@ -127,7 +125,7 @@ Metrics by cluster are shown below.
 ![Box Ball Z](https://williamscale.github.io/attachments/classify-fga-tracking/box_ball_z.png)
 ![Box FGA Theta](https://williamscale.github.io/attachments/classify-fga-tracking/box_fga_theta.png)
 
-Instead of simply classifying all cluster 1 points as attempted field goals, I then filtered them further by taking only streaks of 15 consecutive points labelled as cluster 1. The streak length was chosen arbitrarily and could be tuned further. Then, I assigned a unique identifier to each streak and extracted the start and end times of each classified FGA. The final plot and a snippet of the dataset is shown below.
+Instead of simply classifying all cluster 1 points as attempted field goals, I then filtered them further by taking only streaks of 15 consecutive points labelled as cluster 1. The streak length was chosen arbitrarily and could be tuned further. Then, I assigned a unique identifier to each streak and extracted the start and end times of each classified FGA. A snippet of the dataset is shown below.
 
 | FGA ID  | Game Clock Start | Game Clock End |
 |:-------:|:----------------:|:--------------:|
@@ -147,17 +145,23 @@ I've randomly selected five FGA IDs (time periods classified as FGAs) to evaluat
 
 [Durant 18' Pullup Jump Shot](https://www.nba.com/stats/events?CFID=&CFPARAMS=&GameEventID=71&GameID=0021500013&Season=2015-16&flag=1&title=Durant%2018%27%20Pullup%20Jump%20Shot%20(6%20PTS))
 
+Result: Successful classification
+
 ### FGA ID 35: Q3 5:25
 
 ![ID 35](https://williamscale.github.io/attachments/classify-fga-tracking/fga_35.png)
 
 Nothing is listed in the PBP data and this looks more like a post entry pass than a FGA.
 
+Result: Unsuccessful classification
+
 ### FGA ID 128: Q3 1:32
 
 ![ID 128](https://williamscale.github.io/attachments/classify-fga-tracking/fga_128.png)
 
 [Adams 9' Jump Shot](https://www.nba.com/stats/events?CFID=&CFPARAMS=&GameEventID=370&GameID=0021500013&Season=2015-16&flag=1&title=Adams%209%27%20Jump%20Shot%20(4%20PTS)%20(Westbrook%208%20AST))
+
+Result: Successful classification
 
 ### FGA ID 47: Q4 8:47
 
@@ -167,6 +171,8 @@ Nothing is listed in the PBP data and this looks more like a post entry pass tha
 
 The alley-oop pass is also classified as a FGA, which makes sense given the model inputs.
 
+Result: Successful classification
+
 ### FGA ID 168: Q4 0:15
 
 ![ID 168](https://williamscale.github.io/attachments/classify-fga-tracking/fga_168.png)
@@ -174,3 +180,9 @@ The alley-oop pass is also classified as a FGA, which makes sense given the mode
 [MISS Green 24' 3PT Jump Shot Adams BLOCK](https://www.nba.com/stats/events?CFID=&CFPARAMS=&GameEventID=535&GameID=0021500013&Season=2015-16&flag=1&title=MISS%20Green%2024%27%203PT%20Jump%20Shot)
 
 Successful classification even though it was blocked, but I doubt it would be as good if the block changed the trajectory more significantly.
+
+Result: Successful classification
+
+## Conclusion
+
+Future work will include building a confusion matrix manually, by checking all classified FGAs against actual FGAs in a game. More predicting variables could be created as well. Does the ball hit the backboard? This could be a strong correlator of a FGA. Additionally, I could use multiple games worth of data to build the clustering model.
