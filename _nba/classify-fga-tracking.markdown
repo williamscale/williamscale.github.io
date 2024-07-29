@@ -3,6 +3,8 @@ layout: nba
 title: Classifying FGA in Tracking Data
 ---
 
+Code for this project can be found in my [forked repo](https://github.com/williamscale/NBA-Player-Movements).
+
 ## Problem
 
 In this project, I will use the Spurs vs. Thunder game on October 28, 2015 for examples and training the model.
