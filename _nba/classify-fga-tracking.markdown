@@ -122,3 +122,55 @@ The ball locations by cluster are shown below.
 It is evident that the model does a fairly good job of identifying field goal attempts. Cluster 1 is obviously made up of many shots, in addition to some non-shot datapoints. Further inspection is necessary.
 
 Metrics by cluster are shown below.
+
+![Box Ball Speed](https://williamscale.github.io/attachments/classify-fga-tracking/box_ball_speed.png)
+![Box Ball Z](https://williamscale.github.io/attachments/classify-fga-tracking/box_ball_z.png)
+![Box FGA Theta](https://williamscale.github.io/attachments/classify-fga-tracking/box_fga_theta.png)
+
+Instead of simply classifying all cluster 1 points as attempted field goals, I then filtered them further by taking only streaks of 15 consecutive points labelled as cluster 1. The streak length was chosen arbitrarily and could be tuned further. Then, I assigned a unique identifier to each streak and extracted the start and end times of each classified FGA. The final plot and a snippet of the dataset is shown below.
+
+| FGA ID  | Game Clock Start | Game Clock End |
+|:-------:|:----------------:|:--------------:|
+| 0       | 717.38           | 716.53         |
+| 1       | 693.62           | 692.56         |
+| 2       | 513.50           | 512.58         |
+| &#8942; | &#8942;          | &#8942;        |
+| 167     | 25.50            | 23.41          |
+| 168     | 15.51            | 13.71          |
+| 169     | 8.01             | 5.94           |
+
+I've randomly selected five FGA IDs (time periods classified as FGAs) to evaluate. 
+
+### FGA ID 71: Q1 5:43
+
+![ID 71](https://williamscale.github.io/attachments/classify-fga-tracking/fga_71.png)
+
+[Durant 18' Pullup Jump Shot](https://www.nba.com/stats/events?CFID=&CFPARAMS=&GameEventID=71&GameID=0021500013&Season=2015-16&flag=1&title=Durant%2018%27%20Pullup%20Jump%20Shot%20(6%20PTS))
+
+### FGA ID 35: Q3 5:25
+
+![ID 35](https://williamscale.github.io/attachments/classify-fga-tracking/fga_35.png)
+
+Nothing is listed in the PBP data and this looks more like a post entry pass than a FGA.
+
+### FGA ID 128: Q3 1:32
+
+![ID 128](https://williamscale.github.io/attachments/classify-fga-tracking/fga_128.png)
+
+[Adams 9' Jump Shot](https://www.nba.com/stats/events?CFID=&CFPARAMS=&GameEventID=370&GameID=0021500013&Season=2015-16&flag=1&title=Adams%209%27%20Jump%20Shot%20(4%20PTS)%20(Westbrook%208%20AST))
+
+### FGA ID 47: Q4 8:47
+
+![ID 47](https://williamscale.github.io/attachments/classify-fga-tracking/fga_47.png)
+
+[Adams Alley Oop Dunk](https://www.nba.com/stats/events?CFID=&CFPARAMS=&GameEventID=435&GameID=0021500013&Season=2015-16&flag=1&title=Adams%20%20Alley%20Oop%20Dunk%20(6%20PTS)%20(Augustin%204%20AST))
+
+The alley-oop pass is also classified as a FGA, which makes sense given the model inputs.
+
+### FGA ID 168: Q4 0:15
+
+![ID 168](https://williamscale.github.io/attachments/classify-fga-tracking/fga_168.png)
+
+[MISS Green 24' 3PT Jump Shot Adams BLOCK](https://www.nba.com/stats/events?CFID=&CFPARAMS=&GameEventID=535&GameID=0021500013&Season=2015-16&flag=1&title=MISS%20Green%2024%27%203PT%20Jump%20Shot)
+
+Successful classification even though it was blocked, but I doubt it would be as good if the block changed the trajectory more significantly.
