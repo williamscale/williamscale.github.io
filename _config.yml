@@ -61,7 +61,7 @@ plugins:
 #   - vendor/ruby/
 
 collections:
-  nba:
+  projects:
     output: true
   maps:
     output: true

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: NBA Projects
+title: Projects
 ---
 
 <!-- {% for project in site.nba %}
@@ -10,7 +10,7 @@ title: NBA Projects
   </div>
 {% endfor %} -->
 
-{% for project in site.nba %}
+{% for project in site.projects %}
   <div class="project">
     <h4><a href="{{project.url}}">{{project.title}}</a></h4>
   </div>

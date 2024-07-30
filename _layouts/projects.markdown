@@ -1,7 +1,7 @@
 ---
 layout: page
 ---
-<div class="nba">
+<div class="projects">
   <!-- <h4>{{page.title}}</h4> -->
   <!-- <h4>{{page.title}}</h4> -->
   {{page.content}}

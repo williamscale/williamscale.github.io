@@ -1,5 +1,5 @@
 ---
-layout: nba
+layout: projects
 title: 2022-23 NBA Shot Dashboard
 ---
 

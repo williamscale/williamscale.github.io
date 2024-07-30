@@ -1,5 +1,5 @@
 ---
-layout: nba
+layout: projects
 title: Classifying FGA in Tracking Data
 ---
 

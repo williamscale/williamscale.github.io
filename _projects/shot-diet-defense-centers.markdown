@@ -1,5 +1,5 @@
 ---
-layout: nba
+layout: projects
 title: 2023-24 Spurs Center Rim Protection
 ---
 
