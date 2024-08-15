@@ -1,6 +1,6 @@
 ---
 layout: projects
-title: 2023-24 Spurs Center Rim Protection
+title: 2023-24 Spurs Center Rim Protection Evaluation
 ---
 
 In this project, I will investigate the rim protection of <span style="color:#EF426F">Victor Wembanyama</span> and <span style="color:#00B2A9">Zach Collins</span>. Much of my approach is derived from Seth Partnow's thought process in this [interview](https://www.nytimes.com/athletic/1870696/2020/06/15/evaluation-orlando-magic-rim-protection/).
@@ -97,7 +97,7 @@ Wembanyama is an outlier with that block rate at such a high volume.
 
 ## Rim Rebounding
 
-Finally, to finish the defensive possession, the team must get a defensive rebound. If a player leaves his feet for a block attempt and misses, he may have altered the shot enough to force a miss, but be more susceptible to giving up an easy offensive rebound and putback. Thus, I think defensive rebounding included when evaluating rim protection.
+Finally, to finish the defensive possession, the team must get a defensive rebound. If a player leaves his feet for a block attempt and misses, he may have altered the shot enough to force a miss, but be more susceptible to giving up an easy offensive rebound and putback. Thus, I think defensive rebounding should be included when evaluating rim protection.
 
 I've scraped defensive rebounding data on rim FGA and calculated a defensive rim rebound rate as:
 
