@@ -1,6 +1,7 @@
 ---
 layout: projects
-title: Classifying FGA in Tracking Data
+title: Classifying FGA Within Tracking Data
+subtitle: Using unsupervised learning to identify and label datapoints
 ---
 
 Code for this project can be found in my [forked repo](https://github.com/williamscale/NBA-Player-Movements).
