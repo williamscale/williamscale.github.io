@@ -42,7 +42,24 @@ The degree of a node is the number of connections it has to other nodes. In a di
 $$
 \begin{aligned}
 k_{\text{Keldon Johnson}} &= k_{\text{Keldon Johnson}}^{in} + k_{\text{Keldon Johnson}}^{out} \\
-&= 15 + 14
+&= 15 + 14 \\
+&= 29
 \end{aligned}
 $$
+
+For the entire network, $k^{in}=k^{out}$. The average degree of the network is given by:
+
+$$
+\begin{aligned}
+\langle k^{in} \rangle &= \frac{1}{N} \sum_{i=1}^{N} k_{i}^{in} \\
+&= \frac{1}{20} \times 283 \\
+&= 14.2
+\end{aligned}
+$$
+
+The degree distributions and adjacency matrix are shown below.
+
+![Degree Dist](https://williamscale.github.io/attachments/nba-passing-graph/deg_dist.png)
+![A](https://williamscale.github.io/attachments/nba-passing-graph/adjacency.png)
+
 
