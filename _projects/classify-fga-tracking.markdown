@@ -8,6 +8,7 @@ Code for this project can be found in my [forked repo](https://github.com/willia
 ## Problem
 
 In this project, I will use the Spurs vs. Thunder game on October 28, 2015 for examples and training the model.
+
 I stumbled on some [NBA tracking data](https://github.com/linouk23/NBA-Player-Movements) recently and quickly realized that unlabelled tracking data would be significantly more difficult to work with than expected. As many people have done, I attempted to join the tracking data with play-by-play (PBP) data from the NBA. That works okay, but many of the PBP labels are a few seconds off. For example, in the Spurs' 2015-16 season opener against Oklahoma City, the [PBP log](https://www.nba.com/game/sas-vs-okc-0021500013/play-by-play?period=Q1) shows Manu Ginobili makes a jump shot with 4:05 remaining in the 1st quarter.
 
 ![PBP](https://williamscale.github.io/attachments/classify-fga-tracking/ex3.PNG)
