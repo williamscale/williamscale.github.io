@@ -13,5 +13,6 @@ title: Projects
 {% for project in site.projects %}
   <div class="project">
     <h4><a href="{{project.url}}">{{project.title}}</a></h4>
+    <h6><a href="{{project.url}}">{{project.subtitle}}</a></h6>
   </div>
 {% endfor %}
