@@ -34,11 +34,8 @@ This is all the information RouteE needs to predict fuel usage. For example, ass
 | 7       | 0.456                   |
 | 8       | 0.429                   |
 
-My goal is to minimize the gasoline used though. Perhaps the speed limit is not the optimal speed for a given trip. Using the **visualize_features()** function within the RouteE package, I am able to perform a gridsearch along a specified speed range and grade range. For this, I set the grade to be only the actual leg's grade. The speed range was set as $s_{\text{limit}} \pm 10 \text{mph}$. 
+My goal is to minimize the gasoline used though. Perhaps the speed limit is not the optimal speed for a given trip. Using the **visualize_features()** function within the RouteE package, I am able to perform a gridsearch along a specified speed range and grade range. For this, I set the grade to be only the actual leg's grade. The speed range was set as the speed limit $\pm 10$ mph. 
 
-<!-- The speed range was set as $\text{speed}_{\text{limit}} \pm 10 \text{mph}$. -->
-
-<!-- correct these! -->
 Below is the output of the speed search for leg 1 of the trip. For this leg, all speeds between 40 and 60 mph have equal fuel consumption. For these cases, the speed limit was designated as the optimal speed.
 
 ![Leg 1 Speed Search](https://williamscale.github.io/attachments/routee-optimal-speed/leg1_search.png)
@@ -49,7 +46,6 @@ Below is the same plot for leg 2. Similarly, speeds between approximately 39 and
 
 Additionally, I included an actual speed input to my function that allows comparison between energy consumption scenarios. Then, I ran the model on each speed scenario: speed limit, actual speed, optimal speed, and worst case speed. The predicted fuel usages, in gallons, are shown below.
 
-<!-- change worst speed to be like >= 67 -->
 | Leg | Point A | Point B | Gasoline Used (Speed Limit) | Gasoline Used (Optimal Speed) | Gasoline Used (Actual Speed) | Gasoline Used (Worst Case Speed) |
 |:---:|:--------------|:--------------|:-----------:|:-----------:|:-----------:|:----------:|
 | 1   | DIA           | Denver        | 0.590 (65)  | 0.590 (65)  | 0.654 (67)  | 0.654 (67) |
