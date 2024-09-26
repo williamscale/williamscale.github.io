@@ -67,6 +67,8 @@ $$
 
 where $g$ is the gasoline consumed. Below is the plot of cumulative fuel used over the entire trip.
 
+![Fuel Consumption Along Trip](https://williamscale.github.io/attachments/routee-optimal-speed/gge_along.png)
+
 ## Future Work
 
 As shown below, the same amount of fuel is used over a range of speed 55 to 62 mph. Currently, if the optimal fuel usage is at a speed less than but not equal to the speed limit, the lowest speed is designated as optimal speed. This doesn't change the fuel consumption calculations, but it increases the time of the trip. Ideally, 62 mph would be called optimal, in this example. Optimizing time after optimizing fuel usage is a good next step in the work.
