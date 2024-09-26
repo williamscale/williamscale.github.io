@@ -65,7 +65,7 @@ $$
 \end{aligned}
 $$
 
-where $g$ is the gasoline consumed. Below is the plot of cumulative fuel used over the entire trip.
+where $g$ is the gasoline consumed. An $\alpha=0$ represents the maximum fuel consumed where $\alpha=1$ is the optimal minimum fuel consumed case. Below is the plot of cumulative fuel used over the entire trip.
 
 ![Fuel Consumption Along Trip](https://williamscale.github.io/attachments/routee-optimal-speed/gge_along.png)
 
