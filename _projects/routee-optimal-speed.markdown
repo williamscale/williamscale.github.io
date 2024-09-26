@@ -34,7 +34,7 @@ This is all the information RouteE needs to predict fuel usage. For example, ass
 | 7       | 0.456                   |
 | 8       | 0.429                   |
 
-My goal is to minimize the gasoline used though. Perhaps the speed limit is not the optimal speed for a given trip. Using the **visualize_features()** function within the RouteE package, I am able to perform a gridsearch along a specified speed range and grade range. For this, I set the grade to be only the actual leg's grade. The speed range was set as $\text{speed}\textsubscript{limit}) \pm 10 \text{mph}$. 
+My goal is to minimize the gasoline used though. Perhaps the speed limit is not the optimal speed for a given trip. Using the **visualize_features()** function within the RouteE package, I am able to perform a gridsearch along a specified speed range and grade range. For this, I set the grade to be only the actual leg's grade. The speed range was set as $s_{\text{limit}} \pm 10 \text{mph}$. 
 
 <!-- The speed range was set as $\text{speed}_{\text{limit}} \pm 10 \text{mph}$. -->
 
