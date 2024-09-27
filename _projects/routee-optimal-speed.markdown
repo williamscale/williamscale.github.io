@@ -3,6 +3,8 @@ layout: projects
 title: Minimizing Fuel Usage By Adjusting Vehicle Speed
 ---
 
+Code for this project can be found in my [repo](https://github.com/williamscale/projects/tree/main/routee).
+
 In this project, I use NREL's RouteE Powertrain tool to determine the optimal driving speed on a given route to save on fuel. The RouteE tool takes vehicle make & model, route distance, and road grade as inputs and produces a fuel usage estimate. RouteE documentation can be found [here](https://nrel.github.io/routee-powertrain/intro.html).
 
 For this exercise, I am considering a route from Denver International Airport (DIA) to Vail, CO in a 2016 Toyota Camry (4 cylinder, 2WD). The distances and elevations are approximate. The speed limits are fictional. The road grades are averages, calculated as:
