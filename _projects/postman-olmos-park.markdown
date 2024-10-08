@@ -3,7 +3,9 @@ layout: projects
 title: Postman Algorithm
 ---
 
-Code for this project can be found in my .
+IN WORK
+
+Code for this project can be found in my repo.
 
 # Background
 
@@ -40,7 +42,7 @@ For all models run, I start at node 0 until all edges have been visited.
 
 ## Model Evaluation
 
-Because this is a minimization problem, the models created are judged on overall distance travelled. It's impossible to traverse every edge once and only once. Some roads will need to be repeated. Therefore, minimum distance is the evaluation metric. Comparing the route distance to the sum of all of the edge distance is another way to measure the route efficiency. The total road length is equal to 9.96 miles, which I call $d_{optimal}$. All routes generated will be greater than $d_{optimal}$. The route efficiency is then calculated as:
+Because this is a minimization problem, the models created are judged on overall distance travelled. It's impossible to traverse every edge once and only once. Some roads will need to be repeated. Therefore, minimum distance is the evaluation metric. Comparing the route distance to the sum of all of the edge distances is another way to measure the route efficiency. The total road length is equal to 9.96 miles, which I call $d_{optimal}$. All routes generated will be greater than $d_{optimal}$. The route efficiency is then calculated as:
 
 $$
 \text{eff} = \frac{d_{optimal}}{d_{route}}
