@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Maps
+title: Viz
 ---
 
 <!-- {% for project in site.nba %}
