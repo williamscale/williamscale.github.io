@@ -1,6 +1,6 @@
 ---
 layout: projects
-title: Optimal Route Generation to Run All Neighborhood Streets
+title: Generating a Postman's Optimal Route
 ---
 
 Code for this project can be found in my [repo](https://github.com/williamscale/maps/blob/master/Running/postman/postman.py).
@@ -67,7 +67,7 @@ In this iteration, pruning shortened the route to 80.85 miles, a decrease of abo
 
 Additionally, because there is a randomness factor in the process, there are different results on each model run. Therefore, I simulated each model 100 times, pruned each resulting route, and selected the shortest route as the model's best. For all remaining results, the models have been simulated and pruned. The best simulated route distances along with their efficiencies are shown as well as simulation distributions and cumulative distance vs. convergence progress plots.
 
-#### Results
+### Results
 
 $$
 \text{distance} = 44.55 \text{ miles} \qquad \text{efficiency} = \frac{9.96}{44.55} = 0.22
@@ -80,7 +80,7 @@ $$
 
 The next model I created randomly selects the next edge to traverse, but the selection probability distribution is not uniform. Instead, it is weighted by distance, with shorter edges given a higher probability of selection. This was done in an attempt to avoid repeating long edges. For example, at node 61, the available edges to travel down have lengths of 0.08, 0.02, and 0.03. The respective probabilities assigned to these edges are 0.130, 0.522, and 0.348.
 
-#### Results
+### Results
 
 $$
 \text{distance} = 49.10 \text{ miles} \qquad \text{efficiency} = \frac{9.96}{49.10} = 0.20
@@ -93,7 +93,7 @@ $$
 
 Model 3 is similar to Model 2 but is weighted by exploration status, with higher weights given to edges not yet explored. 
 
-#### Results
+### Results
 
 $$
 \text{distance} = 37.04 \text{ miles} \qquad \text{efficiency} = \frac{9.96}{37.04} = 0.27
@@ -106,7 +106,7 @@ $$
 
 Next I created a model that did not allow immediate backtracking.
 
-#### Results
+### Results
 
 $$
 \text{distance} = 36.40 \text{ miles} \qquad \text{efficiency} = \frac{9.96}{36.40} = 0.27
@@ -149,7 +149,7 @@ $$
 
 $\text{Node 16 Score} > \text{Node 14 Score}$, thus, node 16 (edge 15) is selected as the next step. In cases in which all edges within three layers have been explored, the shortest paths to all nodes connecting to an unexplored edge are calculated using Dijkstra's algorithm via the [NetworkX multi_source_dijkstra()](https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.multi_source_dijkstra.html#networkx.algorithms.shortest_paths.weighted.multi_source_dijkstra) function. 
 
-#### Results
+### Results
 
 $$
 \text{distance} = 12.87 \text{ miles} \qquad \text{efficiency} = \frac{9.96}{12.87} = 0.77
