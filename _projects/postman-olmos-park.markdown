@@ -37,7 +37,7 @@ Using [On The Go Map route planner](https://onthegomap.com/#/create), I extracte
 
 # Model Creation
 
-For all models run, I start at node 0 until all edges have been visited.
+For all models run, I start at node 0 (closest to my house) until all edges have been visited.
 
 ## Model Evaluation
 
@@ -52,7 +52,7 @@ $$
 The first model is purely random. At each node, a random edge is selected to travel down, until the convergence condition is met. As expected this results in many extra miles. A single iteration example result is shown below.
 
 $$
-\text{distance} = 92.83 \qquad \text{efficiency} = \frac{9.96}{92.83} = 0.11
+\text{distance} = 92.83 \text{ miles} \qquad \text{efficiency} = \frac{9.96}{92.83} = 0.11
 $$
 
 For reference, a snippet of the node path is shown below.
@@ -63,13 +63,14 @@ $$
 
 There are obvious inefficiencies right off the bat. Going backwards (node A $\rightarrow$ node B $\rightarrow$ node A) may make sense in some cases. However, a route of node A $\rightarrow$ node B $\rightarrow$ node A $\rightarrow$ node B has no justification. Therefore, I built a pruning function that removes these consecutive, identical edge traversals.
 
-In this iteration, pruning shortened the route to 80.85 miles, a decrease of about 12 miles.
+In this iteration, pruning shortened the route to 80.85 miles, a decrease of about 13%.
 
-Additionally, because there is a randomness factor in the process, there are different results on each model run. Therefore, I simulated each model 100 times, pruned each resulting route, and selected the shortest route as the model's best. For all remaining results, the models have been simulated and pruned.
+Additionally, because there is a randomness factor in the process, there are different results on each model run. Therefore, I simulated each model 100 times, pruned each resulting route, and selected the shortest route as the model's best. For all remaining results, the models have been simulated and pruned. The best simulated route distances along with their efficiencies are shown as well as simulation distributions and cumulative distance vs. convergence progress plots.
 
-**Results**
+#### Results
+
 $$
-\text{distance} = 44.55 \text{miles} \qquad \text{efficiency} = \frac{9.96}{44.55} = 0.22
+\text{distance} = 44.55 \text{ miles} \qquad \text{efficiency} = \frac{9.96}{44.55} = 0.22
 $$
 
 ![Model 1 Histogram](https://williamscale.github.io/attachments/postman-olmospark/m1_dist_hist.png)
@@ -79,9 +80,10 @@ $$
 
 The next model I created randomly selects the next edge to traverse, but the selection probability distribution is not uniform. Instead, it is weighted by distance, with shorter edges given a higher probability of selection. This was done in an attempt to avoid repeating long edges. For example, at node 61, the available edges to travel down have lengths of 0.08, 0.02, and 0.03. The respective probabilities assigned to these edges are 0.130, 0.522, and 0.348.
 
-**Results**
+#### Results
+
 $$
-\text{distance} = 49.10 \text{miles} \qquad \text{efficiency} = \frac{9.96}{49.10} = 0.20
+\text{distance} = 49.10 \text{ miles} \qquad \text{efficiency} = \frac{9.96}{49.10} = 0.20
 $$
 
 ![Model 2 Histogram](https://williamscale.github.io/attachments/postman-olmospark/m2_dist_hist.png)
@@ -91,9 +93,10 @@ $$
 
 Model 3 is similar to Model 2 but is weighted by exploration status, with higher weights given to edges not yet explored. 
 
-**Results**
+#### Results
+
 $$
-\text{distance} = 37.04 \text{miles} \qquad \text{efficiency} = \frac{9.96}{37.04} = 0.27
+\text{distance} = 37.04 \text{ miles} \qquad \text{efficiency} = \frac{9.96}{37.04} = 0.27
 $$
 
 ![Model 3 Histogram](https://williamscale.github.io/attachments/postman-olmospark/m3_dist_hist.png)
@@ -103,9 +106,10 @@ $$
 
 Next I created a model that did not allow immediate backtracking.
 
-**Results**
+#### Results
+
 $$
-\text{distance} = 36.40 \text{miles} \qquad \text{efficiency} = \frac{9.96}{36.40} = 0.27
+\text{distance} = 36.40 \text{ miles} \qquad \text{efficiency} = \frac{9.96}{36.40} = 0.27
 $$
 
 ![Model 4 Histogram](https://williamscale.github.io/attachments/postman-olmospark/m4_dist_hist.png)
@@ -120,6 +124,7 @@ For example, assume node 15 is the current location and edge weights are $\{ 1, 
 From node 15, the next node to travel to is either node 14 or node 16. The scoring process for each option is shown below.
 
 **Node 14 Path Scoring**
+
 | Layer | Weight | Potential Edges    | Unexplored Edges | Score                  |
 |:-----:|:------:|:-------------------|:-----------------|:----------------------:|
 | 1     | 1      | 14                 | 14               | $1 \times 1 = 1$       |
@@ -131,6 +136,7 @@ $$
 $$
 
 **Node 16 Path Scoring**
+
 | Layer | Weight | Potential Edges    | Unexplored Edges   | Score                  |
 |:-----:|:------:|:-------------------|:-------------------|:----------------------:|
 | 1     | 1      | 15                 | 15                 | $1 \times 1 = 1$       |
@@ -143,14 +149,17 @@ $$
 
 $\text{Node 16 Score} > \text{Node 14 Score}$, thus, node 16 (edge 15) is selected as the next step. In cases in which all edges within three layers have been explored, the shortest paths to all nodes connecting to an unexplored edge are calculated using Dijkstra's algorithm via the [NetworkX multi_source_dijkstra()](https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.multi_source_dijkstra.html#networkx.algorithms.shortest_paths.weighted.multi_source_dijkstra) function. 
 
-**Results**
+#### Results
+
 $$
-\text{distance} = 12.87 \text{miles} \qquad \text{efficiency} = \frac{9.96}{12.87} = 0.77
+\text{distance} = 12.87 \text{ miles} \qquad \text{efficiency} = \frac{9.96}{12.87} = 0.77
 $$
 
 ![Model 5 Histogram](https://williamscale.github.io/attachments/postman-olmospark/m5_dist_hist_shortestpath.png)
 ![Model 5 Progress](https://williamscale.github.io/attachments/postman-olmospark/m5_progress_shortestpath.png)
 
-# Future Work
+# Conclusion
+
+Based off of average distances travelled in the simulations, the tree-based model is far superior. It is computationally more expensive, but the juice is worth the squeeze, with no other model producing a path $< 30$ miles. I will run the output route this weekend (Oct 12, 2024) for fun.
 
 Implementing the pruning step into the route planning would be computationally less expensive. Incorporating elevation gain into the edge weight would also be useful, with higher probabilities of selection given to hillier/flatter edges, depending on what I want to run. Adding the shortest path algorithm into the random functions if all adjacent choices have been visited may also improve results for those models. This comes at a computational cost however.
