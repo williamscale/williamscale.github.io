@@ -1,9 +1,7 @@
 ---
 layout: projects
-title: Postman Algorithm
+title: Optimal Route Generation to Run All Neighborhood Streets
 ---
-
-IN WORK
 
 Code for this project can be found in my [repo](https://github.com/williamscale/maps/blob/master/Running/postman/postman.py).
 
