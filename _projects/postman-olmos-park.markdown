@@ -160,6 +160,10 @@ $$
 
 # Conclusion
 
-Based off of average distances travelled in the simulations, the tree-based model is far superior. It is computationally more expensive, but the juice is worth the squeeze, with no other model producing a path $< 30$ miles. I will run the output route this weekend (Oct 12, 2024) for fun.
+Based off of average distances travelled in the simulations, the tree-based model is far superior. It is computationally more expensive, but the juice is worth the squeeze, with no other model producing a path $< 30$ miles.
+
+I ran the route on October 12, 2024. Garmin logged 12.57 miles with 508 feet of elevation gain. The difference in distance is due to some combination of distance measurements & entry on my part, Garmin GPS error, and route-running (running in the center of the street vs. on the shoulder).
+
+![Garmin Route](https://williamscale.github.io/attachments/postman-olmospark/garmin_route.PNG)
 
 Implementing the pruning step into the route planning would be computationally less expensive. Incorporating elevation gain into the edge weight would also be useful, with higher probabilities of selection given to hillier/flatter edges, depending on what I want to run. Adding the shortest path algorithm into the random functions if all adjacent choices have been visited may also improve results for those models. This comes at a computational cost however.
