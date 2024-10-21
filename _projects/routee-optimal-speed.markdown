@@ -40,7 +40,7 @@ Below is the output of the speed search for leg 1 of the trip. For this leg, all
 
 ![Leg 1 Speed Search](https://williamscale.github.io/attachments/routee-optimal-speed/speed_range_1.png)
 
-Below is the same plot for leg 8. All speeds test have identical consumptions. Again, the speed limit is designated as optimal. 
+Below is the same plot for leg 8. All speeds tested have identical consumptions. Again, the speed limit is designated as optimal. 
 
 ![Leg 8 Speed Search](https://williamscale.github.io/attachments/routee-optimal-speed/speed_range_8.png)
 
@@ -56,8 +56,9 @@ Additionally, I included an actual speed input to my function that allows compar
 | 6   | Georgetown    | Silverthorne  | 0.720 (70)  | 0.649 (60)  | 0.720 (73)  | 0.798 (76) |
 | 7   | Silverthorne  | Copper Mtn    | 0.456 (65)  | 0.426 (55)  | 0.427 (62)  | 0.512 (75) |
 | 8   | Copper Mtn    | Vail          | 0.429 (55)  | 0.429 (55)  | 0.429 (51)  | 0.429 (45) |
+|     |               | Sum           | 4.264       | 4.031       | 4.319       | 4.68       |
 
-An efficiency score based off fuel used normalized to the optimal and worst case ratio is calculated as:
+An efficiency score based off fuel used, normalized to the optimal and worst case ratio, is calculated as:
 
 $$
 \begin{aligned}
@@ -67,12 +68,12 @@ $$
 \end{aligned}
 $$
 
-where $g$ is the gasoline consumed. An $\alpha=0$ represents the maximum fuel consumed where $\alpha=1$ is the optimal minimum fuel consumed case. Below is the plot of cumulative fuel used over the entire trip.
+where $g$ is the gasoline consumed. An $\alpha=0$ represents the maximum fuel consumed where $\alpha=1$ is the optimal minimum fuel consumed case. In this trip, there is a difference of over half a gallon of fuel between worst case and optimal! Below is the plot of cumulative fuel used over the entire trip.
 
 ![Fuel Consumption Along Trip](https://williamscale.github.io/attachments/routee-optimal-speed/gge_along.png)
 
 ## Future Work
 
-As shown below, the same amount of fuel is used over a range of speed 55 to 62 mph. Currently, if the optimal fuel usage is at a speed less than but not equal to the speed limit, the lowest speed is designated as optimal speed. This doesn't change the fuel consumption calculations, but it increases the time of the trip. Ideally, 62 mph would be called optimal, in this example. Optimizing time after optimizing fuel usage is a good next step in the work.
+In the example below, the same amount of fuel is used over a range of speed 55 to 62 mph. Currently, if the optimal fuel usage is at a speed less than but not equal to the speed limit, the lowest speed is designated as optimal speed by my function. This doesn't change the fuel consumption calculations, but it increases the time of the trip. Ideally, 62 mph would be called optimal, in this example. Optimizing time after optimizing fuel usage is a good next step in the work.
 
 ![Leg 4 Speed Search](https://williamscale.github.io/attachments/routee-optimal-speed/speed_range_4.png)

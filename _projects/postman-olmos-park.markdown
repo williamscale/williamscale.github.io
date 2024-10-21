@@ -37,7 +37,7 @@ Using [On The Go Map route planner](https://onthegomap.com/#/create), I extracte
 
 # Model Creation
 
-For all models run, I start at node 0 (closest to my house) until all edges have been visited.
+For all models run, I start at node 0 (closest to my house) until all edges have been visited. The route does not have to necessarily end at node 0, and it probably won't.
 
 ## Model Evaluation
 
@@ -147,7 +147,7 @@ $$
 \text{Node 16 Score} = 1 + 1 + 1.25 = 3.25
 $$
 
-$\text{Node 16 Score} > \text{Node 14 Score}$, thus, node 16 (edge 15) is selected as the next step. In cases in which all edges within three layers have been explored, the shortest paths to all nodes connecting to an unexplored edge are calculated using Dijkstra's algorithm via the [NetworkX multi_source_dijkstra()](https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.multi_source_dijkstra.html#networkx.algorithms.shortest_paths.weighted.multi_source_dijkstra) function. 
+$\text{Node 16 Score} > \text{Node 14 Score}$, thus, node 16 (edge 15) is selected as the next step. In cases in which all edges within three layers have been explored, the shortest paths to all nodes connecting to an unexplored edge are calculated using Dijkstra's algorithm via the [NetworkX multi_source_dijkstra()](https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.multi_source_dijkstra.html#networkx.algorithms.shortest_paths.weighted.multi_source_dijkstra) function and the closest one is selected. 
 
 ### Results
 
@@ -159,6 +159,14 @@ $$
 ![Model 5 Progress](https://williamscale.github.io/attachments/postman-olmospark/m5_progress_shortestpath.png)
 
 # Conclusion
+
+| Model                       | Average Distance | Best Distance |
+|:----------------------------|:----------------:|:-------------:|
+| Random                      | 91.5             | 44.6          |
+| Distance-Weighted           | 102.9            | 49.1          |
+| Exploration Status-Weighted | 81.4             | 37.0          |
+| Random without Backtracking | 73.6             | 36.4          |
+| Tree Search                 | 14.6             | 12.9          |
 
 Based off of average distances travelled in the simulations, the tree-based model is far superior. It is computationally more expensive, but the juice is worth the squeeze, with no other model producing a path $< 30$ miles.
 
