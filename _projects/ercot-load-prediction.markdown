@@ -1,6 +1,6 @@
 ---
 layout: projects
-title: Generating a Postman's Optimal Route
+title: Predicting ERCOT Daily System Load
 ---
 
 Code for this project can be found in my repo.
