@@ -3,7 +3,7 @@ layout: projects
 title: Predicting ERCOT Daily System Load
 ---
 
-Code for this project can be found in my repo.
+Code for this project can be found in my [repo](https://github.com/williamscale/projects/tree/main/ERCOT).
 
 # Background
 
