@@ -171,6 +171,17 @@ where $\beta_{0} = 1,019,220$, $\beta_{1} = -21,555$, and $\beta_{2} = 155$. All
 
 ![Model](https://williamscale.github.io/attachments/ercot-load-prediction/m.png)
 
+By taking the derivative with respect to $x$ of the regression equation and setting equal to 0, the "baseline" temperature can be calculated.
+
+$$
+\begin{aligned}
+\frac{\mathrm{d} x}{\mathrm{d} y} &= 2 \beta_{2} x - \beta_{1} = 0\\
+&\Rightarrow x = \frac{\beta_{1}}{2 \beta_{2}} = 69.5 \text{F}
+\end{aligned}
+$$
+
+Thus, the further the temperature is from 70F, the higher the predicted load on a given day.
+
 # Prediction
 
 Finally, the latest model was used to make predictions on the test set with $\text{MAE}=12,617$ and $\text{RMSE}=17,807$.
