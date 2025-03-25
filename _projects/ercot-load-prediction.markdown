@@ -5,11 +5,11 @@ title: Predicting ERCOT Daily System Load
 
 Code for this project can be found in my [repo](https://github.com/williamscale/projects/tree/main/ERCOT).
 
-#### Background
+# Background
 
 The goal of this project is to predict system energy load of the Electric Reliability Council of Texas (ERCOT) within the South region for a given day.
 
-### Data
+# Data
 
 Hourly system load data was downloaded as a csv from the [ERCOT Data Access Portal](https://data.ercot.com/) within the Actual System Load by Forecast Zone report. A snippet of the raw data is shown below. The system load units are not explicit, but based off other ERCOT documentation, I believe it is megawatts (MW).
 
@@ -57,9 +57,9 @@ The two datasets were then joined on **operatingDay**. The data was then split i
 | 9/28/2024    | Sunday    | Weekend      | 64       | 97       | 333407.2   |
 | 9/29/2024    | Monday    | Weekday      | 64       | 95       | 349663.2   |
 
-### Features
+# Features
 
-In this section, all analysis is done using the training set.
+In this section, all analysis was done using the training set.
 
 ## Day of Week
 
@@ -99,7 +99,7 @@ Below are the minimum and maximum daily temperatures plotted with the daily load
 
 Because the day of the week features were deemed not statistically significant, they are excluded from model building. Temperature with a quadratic term is thus the only feature so far. Because minimum and maximum temperatures are collinear, they cannot be used simultaneously in a model, and will be evaluated separately. 
 
-### Model Building
+# Model Building
 
 ## Model 1: Minimum Temperature
 
@@ -113,7 +113,7 @@ where $\beta_{0} = 728,831$, $\beta_{1} = -18,506$, and $\beta_{2} = 183$. All c
 
 ![Model 1](https://williamscale.github.io/attachments/ercot-load-prediction/m1.png)
 
-# Assumptions
+### Assumptions
 
 Firstly, I checked for outliers using the Cook's distance metric. A data point exceeding a Cook's distance of 1 or $\frac{4}{n}$ where $n$ is the number of data points, should be investigated. These are two common rules of thumb, not hard rules. As shown below, there are many points above the $\frac{4}{n}$ red line and a few significantly larger than the rest of the dataset.
 
@@ -141,7 +141,7 @@ where $\beta_{0} = 1,017,614$, $\beta_{1} = -21,511$, and $\beta_{2} = 155$. All
 
 ![Model 2](https://williamscale.github.io/attachments/ercot-load-prediction/m2.png)
 
-# Assumptions
+### Assumptions
 
 Outliers are checked via Cook's Distance as shown below.
 
@@ -187,8 +187,12 @@ $$
 \end{aligned}
 $$
 
-Thus, the further the temperature is from 70$^{\circ}$F, the higher the predicted load on a given day. It's important to remember this model is built on actual temperatures, so the predictions are only as good as the weather forecasts.
+In other words, the further the temperature is from 70$^{\circ}$F, the higher the predicted load on a given day. 
 
-### Prediction
+# Prediction
 
-Finally, the model was used to make predictions on the test set (December 2024). On 18 days, load was overestimated with the remaining 13 days being underestimated. The overall system load in December was 8,532 gigawatts (GW) and the predicted load was 8,700 GW, meaning there would be a surplus of 168 GW if power generation decisions were based entirely on these predictions. The errors are $\text{MAE}=12,617$ and $\text{RMSE}=17,807$.
+Finally, the model was used to make predictions on the test set (December 2024). On 18 days, load was overestimated and the remaining 13 days were underestimated. The overall system load in December was 8,532 gigawatts (GW) and the predicted load was 8,700 GW, meaning there would be a surplus of 168 GW if power generation decisions were based entirely on these predictions. The errors are $\text{MAE}=12,617$ and $\text{RMSE}=17,807$.
+
+# Conclusion
+
+It's important to remember this model is built on actual temperatures, so the predictions are only as good as the weather forecasts. Future work could include additional features, such as humidity. Additionally, the data set splitting was done not randomly, but as a time series, so that a time series model like ARIMA could be employed. 
