@@ -181,7 +181,7 @@ $$
 \text{Daily Load} = \beta_{0} + \beta_{1} \text{Max Temp} + \beta_{2} \text{Max Temp}^{2}
 $$
 
-where $\beta_{0} = 1,019,220$, $\beta_{1} = -21,555$, and $\beta_{2} = 155$. All coefficients are significant with $\text{p-values} \approx 0$ and $R^{2}=0.86$. The equation can be interpreted as $-21,555 + 310 x$ is the change in predicted system load associated with a 1 degree temperature change. The addition of the validation set data did not affect the estimated coefficients much. The resulting regression line is shown below.
+where $\beta_{0} = 1,019,220$, $\beta_{1} = -21,555$, and $\beta_{2} = 155$. All coefficients are significant with $\text{p-values} \approx 0$ and $R^{2}=0.86$. The addition of the validation set data did not affect the estimated coefficients much. The resulting regression line is shown below.
 
 ![Model](https://williamscale.github.io/attachments/ercot-load-prediction/m.png)
 
@@ -194,7 +194,7 @@ $$
 \end{aligned}
 $$
 
-In other words, the further the temperature is from 70$^{\circ}$F, the higher the predicted load on a given day. 
+In other words, the further the temperature is from 70$^{\circ}$F, the higher the predicted load on a given day. The derivative is also useful in interpreting the regression equation as $2 \beta_{2} x - \beta_{1} = 310 x - 21,555$ is the change in predicted system load associated with a 1 degree temperature change at a given $x$.
 
 ## Prediction
 
