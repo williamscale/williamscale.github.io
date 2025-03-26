@@ -94,8 +94,15 @@ The $$\text{p-value} = 0.18$$, therefore we accept the null hypothesis that ther
 Below are the minimum and maximum daily temperatures plotted with the daily loads. It is evident that there is a relationship between the variables, albeit a non-linear one.
 
 ![Min vs. Load](https://williamscale.github.io/attachments/ercot-load-prediction/load_minTemp.png)
+![Histogram Min Temp](https://williamscale.github.io/attachments/ercot-load-prediction/hist_min.png)
 
 ![Max vs. Load](https://williamscale.github.io/attachments/ercot-load-prediction/load_maxTemp.png)
+![Histogram Max Temp](https://williamscale.github.io/attachments/ercot-load-prediction/hist_max.png)
+
+| Feature  | Min [$^{\circ}$F] | Max [$^{\circ}$F] | Mean [$^{\circ}$F] | Median [$^{\circ}$F] | Standard Deviation [$^{\circ}$F] |
+|:--------:|:-----------------:|:-----------------:|:------------------:|:---------------------|:--------------------------------:|
+| Min Temp | 18                | 81                | 65                 | 71                   | 15                               |
+| Max Temp | 29                | 108               | 85                 | 88                   | 14                               |
 
 Because the day of the week features were deemed not statistically significant, they are excluded from model building. Temperature with a quadratic term is thus the only feature so far. Because minimum and maximum temperatures are collinear, they cannot be used simultaneously in a model, and will be evaluated separately. 
 
