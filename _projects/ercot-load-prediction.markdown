@@ -200,6 +200,10 @@ In other words, the further the temperature is from 70$^{\circ}$F, the higher th
 
 Finally, the model was used to make predictions on the test set (December 2024). On 18 days, load was overestimated and the remaining 13 days were underestimated. The overall system load in December was 8,532 gigawatts (GW) and the predicted load was 8,700 GW, meaning there would be a surplus of 168 GW if power generation decisions were based entirely on these predictions. The errors are $\text{MAE}=12,617$ and $\text{RMSE}=17,807$.
 
+Below is the percentage error by day. The mean absolute percentage error is $\text{MAPE}=4.6\%$.
+
+![Pct Error](https://williamscale.github.io/attachments/ercot-load-prediction/err_pct.png)
+
 ## Conclusion
 
 It's important to remember this model is built on actual temperatures, so the predictions are only as good as the weather forecasts. Future work could include additional features, such as humidity. Additionally, the data set splitting was done not randomly, but as a time series, so that a time series model like ARIMA could be employed. 
