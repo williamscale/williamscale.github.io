@@ -50,13 +50,13 @@ My hypothesis was that energy demands in a city would be highly dependent on occ
 
 Next, [NOAA's Online Weather Data](https://www.weather.gov/media/climateservices/NOWData.pdf) (NOWData) was [queried](https://www.weather.gov/wrh/Climate?wfo=ewx) for daily high and low temperatures [$^{\circ}$F] in the San Antonio area. A snippet of the weather data is shown below. It's important to recognize that these are actual temperatures, not forecasts. 
 
-| operatingDay | Min     | Max     |
-|:------------:|:-------:|:-------:|
-| 1/1/2024     | 46      | 62      |
-| 1/2/2024     | 44      | 49      |
-| &#8942;      | &#8942; | &#8942; |
-| 12/30/2024   | 46      | 89      |
-| 12/31/2024   | 50      | 72      |
+| operatingDay | Min [$^{\circ}$F] | Max [$^{\circ}$F] |
+|:------------:|:-----------------:|:-----------------:|
+| 1/1/2024     | 46                | 62                |
+| 1/2/2024     | 44                | 49                |
+| &#8942;      | &#8942;           | &#8942;           |
+| 12/30/2024   | 46                | 89                |
+| 12/31/2024   | 50                | 72                |
 
 ![Temps](https://williamscale.github.io/attachments/cps-load-prediction/sa_temps.png)
 
@@ -94,7 +94,7 @@ Similarly, below are the daily loads for weekdays and weekends. It is not obviou
 
 ![Load by Weekend](https://williamscale.github.io/attachments/cps-load-prediction/weekend_jitter.png)
 
-As shown below the distributions of daily loads by weekday/weekend are not normal either. Thus, a two-sample t-test cannot be used and we opt for a two-sample Wilcoxon test.
+As shown below, the distributions of daily loads by weekday/weekend are not normal either. Thus, a two-sample t-test cannot be used and we opt for a two-sample Wilcoxon test.
 
 ![Weekend Histogram](https://williamscale.github.io/attachments/cps-load-prediction/weekend_hist.png)
 
@@ -135,7 +135,7 @@ where $\beta_{0} = 177,128$, $\beta_{1} = -4,876$, and $\beta_{2} = 49$. All coe
 
 ![Model 1](https://williamscale.github.io/attachments/cps-load-prediction/m1_reg.png)
 
-##### Assumptions
+#### Assumptions
 
 Firstly, I checked for outliers using the Cook's distance metric. A data point exceeding a Cook's distance of 1 or $\frac{4}{n}$ where $n$ is the number of data points, should be investigated. These are two common rules of thumb, not hard rules. As shown below, there are a few points above the $\frac{4}{n}$ red line and one significantly larger than the rest of the dataset.
 
@@ -163,13 +163,13 @@ where $\beta_{0} = 262,651$, $\beta_{1} = -5,949$, and $\beta_{2} = 43$. All coe
 
 ![Model 2](https://williamscale.github.io/attachments/cps-load-prediction/m2_reg.png)
 
-##### Assumptions
+#### Assumptions
 
 Outliers are checked via Cook's Distance as shown below.
 
 ![CD Model 2](https://williamscale.github.io/attachments/cps-load-prediction/cd_m2.png)
 
-The highest points correspond to the days of the training set with much colder daily extreme temps than the rest of the data. Mid January included the coldest days of the entire year. Removing some outliers may be considered. Ideally, more winter data would be available to determine how rare these cold days are.
+The highest points correspond to the days of the training set with much colder daily extreme temps than the rest of the data. Mid-January included the coldest days of the entire year. Removing some outliers may be considered. Ideally, more winter data would be available to determine how rare these cold days are.
 
 From the fitted values vs. residuals plot below, we can see the constant variance and linearity assumptions are satisfied. The residuals are centered around 0 and there does not appear to be any heteroscedasticity. There may be some independence assumption deviation with potential clusters at the lower end of the fitted values. Again, it doesn't seem too severe.
 
@@ -193,7 +193,7 @@ The autocorrelation function (ACF) plot reinforces this.
 
 ![Demand ACF](https://williamscale.github.io/attachments/cps-load-prediction/acf_demand.png)
 
-To obtain stationarity, I then took the difference in demand with a lag of 1 between days. In other words, the day-to-day difference in demand is relatively constant. This is shown both in the ACF plot, the plot over time, and via an augmented Dickey-Fuller (ADF) test ($\text{p-value}=0.01$).
+To obtain stationarity, I then took the difference in demand with a lag of 1 between days. In other words, although the demand is not constant, the day-to-day difference in demand is relatively constant. This is shown both in the ACF plot, the plot over time, and via an augmented Dickey-Fuller (ADF) test ($\text{p-value}=0.01$).
 
 ![Demand Diff Training](https://williamscale.github.io/attachments/cps-load-prediction/demand_diff_time_training.png)
 
@@ -207,10 +207,10 @@ To ensure this was an appropriate choice, I also tested similar models and used 
 
 | Model | p | d | q | Function | Equation |
 |:-----:|:-:|:-:|:-:|:---------|:---------|
-| 2.1   | 0 | 1 | 4 | Arima()  | $Demand_{t} - Demand_{t-1}$ = 0.14 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.18 \epsilon_{t-3} - 0.17 \epsilon_{t-4} |
-| 2.2   | 0 | 1 | 5 | Arima()  | $Demand_{t} - Demand_{t-1}$ = 0.14 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.19 \epsilon_{t-3} - 0.16 \epsilon_{t-4} + 0.03 \epsilon_{t-5} |
-| 2.3   | 0 | 1 | 3 | Arima()  | $Demand_{t} - Demand_{t-1}$ = 0.10 \epsilon_{t-1} - 0.31 \epsilon_{t-2} - 0.16 \epsilon_{t-3} |
-| 2.4   | 1 | 1 | 4 | Arima()  | $Demand_{t} - Demand_{t-1}$ = -0.32 (Demand_{t-1} - Demand_{t-2}) + 0.46 \epsilon_{t-1} - 0.25 \epsilon_{t-2} - 0.28 \epsilon_{t-3} - 0.21 \epsilon_{t-4} |
+| 2.1   | 0 | 1 | 4 | Arima()  | $Demand_{t} - Demand_{t-1} = 0.14 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.18 \epsilon_{t-3} - 0.17 \epsilon_{t-4}$ |
+| 2.2   | 0 | 1 | 5 | Arima()  | $Demand_{t} - Demand_{t-1} = 0.14 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.19 \epsilon_{t-3} - 0.16 \epsilon_{t-4} + 0.03 \epsilon_{t-5}$ |
+| 2.3   | 0 | 1 | 3 | Arima()  | $Demand_{t} - Demand_{t-1} = 0.10 \epsilon_{t-1} - 0.31 \epsilon_{t-2} - 0.16 \epsilon_{t-3}$ |
+| 2.4   | 1 | 1 | 4 | Arima()  | $Demand_{t} - Demand_{t-1} = -0.32 (Demand_{t-1} - Demand_{t-2}) + 0.46 \epsilon_{t-1} - 0.25 \epsilon_{t-2} - 0.28 \epsilon_{t-3} - 0.21 \epsilon_{t-4}$ |
 | 2.5   | 0 | 1 | 4 | auto.arima(stepwise = FALSE, approximation = FALSE) | Same as Model 2.1 |
 
 Note that with a comprehensive search by *auto.arima*, the same model is returned as the model based on the ACF/PACF plots.
@@ -221,8 +221,8 @@ The linear regression models are able to capture effects of temperature on the e
 
 | Model | Description               | Equation |
 |:-----:|:--------------------------|:---------|
-| 3.1   | ARIMA(0, 1, 4) + Min Temp | $Demand_{t} - Demand_{t-1}$ = 181 (\text{Min Temp}_{t} - \text{Min Temp}_{t-1}) + 0.16 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.20 \epsilon_{t-3} - 0.17 \epsilon_{t-4} |
-| 3.2   | ARIMA(0, 1, 4) + Max Temp | $Demand_{t} - Demand_{t-1}$ = 127 (\text{Max Temp}_{t} - \text{Max Temp}_{t-1}) + 0.16 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.22 \epsilon_{t-3} - 0.18 \epsilon_{t-4} |
+| 3.1   | ARIMA(0, 1, 4) + Min Temp | $Demand_{t} - Demand_{t-1} = 181 (\text{Min Temp}_{t} - \text{Min Temp}_{t-1}) + 0.16 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.20 \epsilon_{t-3} - 0.17 \epsilon_{t-4}$ |
+| 3.2   | ARIMA(0, 1, 4) + Max Temp | $Demand_{t} - Demand_{t-1}$ = 127 (\text{Max Temp}_{t} - \text{Max Temp}_{t-1}) + 0.16 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.22 \epsilon_{t-3} - 0.18 \epsilon_{t-4}$ |
 
 ### Model Comparison
 
@@ -230,16 +230,16 @@ Predictions were then made on the validation set using all models.
 
 Model 1.2 performs significantly best, using root mean squared error (RMSE) as the comparison metric. This metric penalizes larger errors more than mean absolute error (MAE), for example.
 
-| Model | Method    | RMSE  |
-|:-----:|:----------|:-----:|
-| 1.1   | Lin. Reg. | 5,220 |
-| 1.2   | Lin. Reg. | 4,567 |
-| 2.1   | ARIMA     | 8,141 |
-| 2.2   | ARIMA     | 7,983 |
-| 2.3   | ARIMA     | 7,823 |
-| 2.4   | ARIMA     | 7,926 |
-| 3.1   | ARIMAX    | 6,565 |
-| 3.2   | ARIMAX    | 7,653 |
+| Model | Method            | RMSE  |
+|:-----:|:------------------|:-----:|
+| 1.1   | Linear Regression | 5,220 |
+| 1.2   | Linear Regression | 4,567 |
+| 2.1   | ARIMA             | 8,141 |
+| 2.2   | ARIMA             | 7,983 |
+| 2.3   | ARIMA             | 7,823 |
+| 2.4   | ARIMA             | 7,926 |
+| 3.1   | ARIMAX            | 6,565 |
+| 3.2   | ARIMAX            | 7,653 |
 
 Then, the training and validation sets are combined and a model is re-trained on this larger dataset using the parameters from Model 1.2. The resulting model is
 
@@ -260,7 +260,7 @@ $$
 \end{aligned}
 $$
 
-In other words, the further the temperature is from 69$^{\circ}$F, the higher the predicted load on a given day. The derivative is also useful in interpreting the regression equation as $2 \beta_{2} x - \beta_{1} = 97 x - 6,011$ is the change in predicted system load associated with a 1 degree temperature change at a given $x$.
+In other words, the further the temperature is from 69.4$^{\circ}$F, the higher the predicted load on a given day. The derivative is also useful in interpreting the regression equation as $2 \beta_{2} x - \beta_{1} = 97 x - 6,011$ is the change in predicted system load associated with a 1 degree temperature change at a given $x$.
 
 ## Prediction
 
@@ -278,15 +278,15 @@ The residual metrics are $\text{MAE}=3,675$ MWh, $\text{RMSE}=5,223$ MWh, and me
 
 To apply these predictions to the real-world, I then created the following scenario and act as CPS within the confines and assumptions I made. In other words, if CPS trusts my model blindly, given how the Texas power market works and some imposed uncertainties, will CPS profit? I have tried to note all the assumptions I made in this exercise.
 
-I apply my predictions in the day-ahead market (DAM) and then operate in the real-time market (RTM) with any energy surplus or deficit.
+I apply my predictions in the day-ahead market (DAM) and then operate in the real-time market (RTM) as needed with any energy surplus or deficit.
 
 ### CPS Capacity
 
-For simplicity, there are 5 CPS power generation plants with varying parameters as shown below. Operating costs and capacities are fictional and possibly far from accurate. Capacities are set to constant for all plants except wind & solar. For those, for each operating day, I sampled from a truncated normal distribution with mean of 8,000 MWh, standard deviation of 1,000 MWh, and a max capacity of 10,000 MWh. This is an attempt to capture some of the volatility of these power sources. I also assume that the wind/solar capacities are known the day ahead. Future work on this project includes removing this assumption.
+For simplicity, assume there are 5 CPS power generation plants with varying parameters as shown below. Operating costs and capacities are fictional and possibly far from accurate. Capacities are set to constant for all plants except wind & solar. For those, for each operating day, I sampled from a truncated normal distribution with mean of 8,000 MWh, standard deviation of 1,000 MWh, and a max capacity of 10,000 MWh. This is an attempt to capture some of the volatility of these power sources. I also assume that the wind/solar capacities are known the day ahead. Future work on this project includes removing this assumption.
 
-The priorities are the order that CPS uses power. Wind/solar are set to identical priorities and whichever has a higher capacity on a given day is given higher priority. I also assume that demand & capacity are constant throughout a single day. This is inaccurate since solar plants do not produce energy at night, winds vary throughout the day, and demand during the heat of the summer afternoon is much higher than dawn in the fall, for examples.
+The priorities are the order that CPS uses power. Wind/solar are set to identical priorities and whichever has a higher capacity on a given day is given higher priority. I also assume that demand & capacity are constant throughout a single day. This is inaccurate since solar plants do not produce energy at night, winds vary throughout the day, and demand during the heat of the summer afternoon is much higher than on a crisp fall morning, for examples.
 
-I believe peaking plants have very little spool up time and can be used on days CPS underestimates demand. However, for this scenario, I assume they can only be "turned on" if they are predicted to be needed. 
+I believe peaking plants have very little spool up time and can be used on days CPS underestimates demand. However, for this scenario, I assume they can only be "turned on" if they are predicted to be needed on the previous day. 
 
 | Plant        | Operating Cost [$/MWh] | Capacity [MWh]                       | Priority |
 |:-------------|:----------------------:|:------------------------------------:|:--------:|
@@ -296,7 +296,7 @@ I believe peaking plants have very little spool up time and can be used on days 
 | Wind         | 45                     | $\mathcal{N} (8000, 1000, 0, 10000)$ | 3        |
 | Solar        | 45                     | $\mathcal{N} (8000, 1000, 0, 10000)$ | 3        |
 
-CPS then has a max capacity of $35000+20000+10000+10000+10000=85000$ MWh at a cost of $(50+56+70+45+45) \times 85000 = \$22,610,000$. Below is a plot of the test set capacity by power source.
+CPS then has a max capacity of $35000+20000+10000+10000+10000=85000$ MWh at a cost of $(50+56+70+45+45) \times 85000 = \mathdollar 22,610,000$. Below is a plot of the test set capacity by power source.
 
 ![Source Area](https://williamscale.github.io/attachments/cps-load-prediction/source_area.png)
 
@@ -306,8 +306,9 @@ Per a [2022 Generation Utilization Update presentation](https://www.cpsenergy.co
 Next, I plan for the day ahead by comparing the predicted generation needs to the capacity for each day. Below is the process for November 25, for example.
 
 $$
-\text{predicted demand} = 66758 \text{MWh} \quad \text{buffer} = 0.1375 \\
-\Rightarrow \text{generation} = 66758 \times (1 + 0.1375) = 75938 MWh \\
+\text{predicted demand} = 66758 \text{ MWh} \\
+\text{buffer} = 0.1375 \\
+\Rightarrow \text{generation} = 66758 \times (1 + 0.1375) = 75938 \text{ MWh} \\
 $$
 
 The CPS capacity for November 25 is below.
@@ -329,13 +330,13 @@ $$
 \end{aligned}
 $$
 
-However, on November 25, the actual demand from CPS customers is 60,190 MWh. CPS customer rates for [residential service](https://www.cpsenergy.com/content/dam/corporate/en/Documents/2024_Rate_ResidentialElectric.pdf) in non-peak periods (which the test set is in) is \$0.07503 per kWh or \$75.03 per MWh. For [commercial service](https://www.cpsenergy.com/content/dam/corporate/en/Documents/2024_Rate_GeneralService.pdf), the rate is \$78.17 per MWh. I am unsure what proportion of the demand is generated by residential customers vs. commercial customers. For this exercise, I sample from a normal distribution with a mean of 0.5 and standard deviation of 0.02 and set these values as the proportion of demand due to residential customers. The commercial proportion is the remainder. On November 25, the residential proportion is 48.3/% with $1-0.483=0.517$ being the commercial proportion. Therefore, the revenue generated from CPS customers is given by:
+However, on November 25, the actual demand from CPS customers was 60,190 MWh. CPS customer rates for [residential service](https://www.cpsenergy.com/content/dam/corporate/en/Documents/2024_Rate_ResidentialElectric.pdf) in non-peak periods (which the test set is in) is \textdollar0.07503 per kWh or \textdollar75.03 per MWh. For [commercial service](https://www.cpsenergy.com/content/dam/corporate/en/Documents/2024_Rate_GeneralService.pdf), the rate is \textdollar78.17 per MWh. I am unsure what proportion of the demand is generated by residential customers vs. commercial customers. For this exercise, I sample from a normal distribution with a mean of 0.5 and standard deviation of 0.02 and set these values as the proportion of demand due to residential customers. The commercial proportion is the remainder. On November 25, the residential proportion is 48.3\% with $1-0.483=0.517$ being the commercial proportion. Therefore, the revenue generated from CPS customers is given by:
 
 $$
-\text{revenue} = 60190 \times ((0.483)(75.03) + (0.517)(78.17)) = \$4,611,959
+\text{revenue} = 60190 \times \left( (0.483)(75.03) + (0.517)(78.17) \right) = \$4,611,959
 $$
 
-Recall, though, that power was generated based on the predictions. There is a surplus of $75938 - 60190 = 15748$ MWh that can possibly be sold by engaging in the real-time market via ERCOT. Instead of assuming there is always demand outside of the CPS service area, I made a few probabilistic assumptions. Firstly, assume there is a 50\% chance there is demand off-system, i.e., $B(1, 0.5)$. Then, assume the demand follows a normal distribution with mean of 10,000 MWh and standard deviation of 2,000 MWh. A snippet of the generated off-system demand is shown below.
+Recall, though, that power was generated based on the predictions. There is a surplus of $75938 - 60190 = 15748$ MWh that can possibly be sold by engaging in the real-time market via ERCOT. Instead of assuming there is always demand outside of the CPS service area, I made a few probabilistic assumptions. Firstly, assume there is a 50\% chance there is any amount of demand off-system, i.e., $B(1, 0.5)$. Then, on days demand exists, assume the demand follows a normal distribution with mean of 10,000 MWh and standard deviation of 2,000 MWh. A snippet of the generated off-system demand is shown below.
 
 | Operating Day | Off-System Demand [MWh] |
 |:-------------:|:-----------------------:|
@@ -353,13 +354,14 @@ Simply put, the following events need to occur in order to sell excess energy:
 2. Generate excess CPS customer demand.
 3. Non-CPS demand exists.
 
-For rates at which CPS can sell on the open market, I again sampled from a truncated normal distribution with a mean of \$100 per MWh, a standard deviation of 25, a minimum of \$0.01, and a maximum of \$150. Then, CPS sells all the excess energy generated that there is demand for, producing a revenue of \$15,097,613. Similarly, in cases of underestimating CPS demand, CPS buys power in the open market, with expenses of \$499,650 in the test set. The total profit is then given by:
+For rates at which CPS can sell on the open market, I again sampled from a truncated normal distribution with a mean of \textdollar100 per MWh, a standard deviation of 25, a minimum of \textdollar0.01, and a maximum of \textdollar150. Then, CPS sells all the excess energy generated that there is demand for, producing a revenue of \textdollar15,097,613. Similarly, in cases of underestimating CPS demand, CPS buys power in the open market, with expenses of \textdollar499,650 in the test set. The total profit is then given by:
 
 $$
 \begin{aligned}
 \text{profit} &= \text{CPS customer revenue} + \text{off-system sales} - \text{operating cost} - \text{off-system purchases} \\
 &= 163,848,598 + 15,097,613 - 128,266,128 - 499,650 \\
 &= \$50,180,433
+\end{aligned}
 $$ 
 
 ## Conclusion & Future Work
