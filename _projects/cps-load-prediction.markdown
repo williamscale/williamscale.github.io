@@ -207,10 +207,10 @@ To ensure this was an appropriate choice, I also tested similar models and used 
 
 | Model | p | d | q | Function | Equation |
 |:-----:|:-:|:-:|:-:|:---------|:---------|
-| 2.1   | 0 | 1 | 4 | Arima()  | $\text{Demand}\textsubscript{t} - \text{Demand}\textsubscript{t-1} = 0.14 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.18 \epsilon_{t-3} - 0.17 \epsilon_{t-4}$ |
-| 2.2   | 0 | 1 | 5 | Arima()  | $\text{Demand}\textsubscript{t} - \text{Demand}\textsubscript{t-1} = 0.14 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.19 \epsilon_{t-3} - 0.16 \epsilon_{t-4} + 0.03 \epsilon_{t-5}$ |
-| 2.3   | 0 | 1 | 3 | Arima()  | $\text{Demand}\textsubscript{t} - \text{Demand}\textsubscript{t-1} = 0.10 \epsilon_{t-1} - 0.31 \epsilon_{t-2} - 0.16 \epsilon_{t-3}$ |
-| 2.4   | 1 | 1 | 4 | Arima()  | $\text{Demand}\textsubscript{t} - \text{Demand}\textsubscript{t-1} = -0.32 (\text{Demand}\textsubscript{t-1} - \text{Demand}\textsubscript{t-2}) + 0.46 \epsilon_{t-1} - 0.25 \epsilon_{t-2} - 0.28 \epsilon_{t-3} - 0.21 \epsilon_{t-4}$ |
+| 2.1   | 0 | 1 | 4 | Arima()  | $\text{Demand}_{t} - \text{Demand}_{t-1} = 0.14 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.18 \epsilon_{t-3} - 0.17 \epsilon_{t-4}$ |
+| 2.2   | 0 | 1 | 5 | Arima()  | $\text{Demand}_{t} - \text{Demand}_{t-1} = 0.14 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.19 \epsilon_{t-3} - 0.16 \epsilon_{t-4} + 0.03 \epsilon_{t-5}$ |
+| 2.3   | 0 | 1 | 3 | Arima()  | $\text{Demand}_{t} - \text{Demand}_{t-1} = 0.10 \epsilon_{t-1} - 0.31 \epsilon_{t-2} - 0.16 \epsilon_{t-3}$ |
+| 2.4   | 1 | 1 | 4 | Arima()  | $\text{Demand}_{t} - \text{Demand}_{t-1} = -0.32 (\text{Demand}_{t-1} - \text{Demand}_{t-2}) + 0.46 \epsilon_{t-1} - 0.25 \epsilon_{t-2} - 0.28 \epsilon_{t-3} - 0.21 \epsilon_{t-4}$ |
 | 2.5   | 0 | 1 | 4 | auto.arima(stepwise = FALSE, approximation = FALSE) | Same as Model 2.1 |
 
 Note that with a comprehensive search by *auto.arima*, the same model is returned as the model based on the ACF/PACF plots.
@@ -221,8 +221,8 @@ The linear regression models are able to capture effects of temperature on the e
 
 | Model | Description               | Equation |
 |:-----:|:--------------------------|:---------|
-| 3.1   | ARIMA(0, 1, 4) + Min Temp | $\text{Demand}\textsubscript{t} - \text{Demand}\textsubscript{t-1} = 181 (\text{Min Temp}\textsubscript{t} - \text{Min Temp}\textsubscript{t-1}) + 0.16 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.20 \epsilon_{t-3} - 0.17 \epsilon_{t-4}$ |
-| 3.2   | ARIMA(0, 1, 4) + Max Temp | $Demand\textsubscript{t} - Demand\textsubscript{t-1}$ = 127 (\text{Max Temp}\textsubscript{t} - \text{Max Temp}\textsubscript{t-1}) + 0.16 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.22 \epsilon_{t-3} - 0.18 \epsilon_{t-4}$ |
+| 3.1   | ARIMA(0, 1, 4) + Min Temp | $\text{Demand}_{t} - \text{Demand}_{t-1} = 181 (\text{Min Temp}_{t} - \text{Min Temp}_{t-1}) + 0.16 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.20 \epsilon_{t-3} - 0.17 \epsilon_{t-4}$ |
+| 3.2   | ARIMA(0, 1, 4) + Max Temp | $\text{Demand}_{t} - \text{Demand}_{t-1}$ = 127 (\text{Max Temp}_{t} - \text{Max Temp}_{t-1}) + 0.16 \epsilon_{t-1} - 0.28 \epsilon_{t-2} - 0.22 \epsilon_{t-3} - 0.18 \epsilon_{t-4}$ |
 
 ### Model Comparison
 
@@ -296,7 +296,7 @@ I believe peaking plants have very little spool up time and can be used on days 
 | Wind         | 45                     | $\mathcal{N} (8000, 1000, 0, 10000)$ | 3        |
 | Solar        | 45                     | $\mathcal{N} (8000, 1000, 0, 10000)$ | 3        |
 
-CPS then has a max capacity of $35000+20000+10000+10000+10000=85000$ MWh at a cost of $(50+56+70+45+45) \times 85000 = \textdollar 22,610,000$. Below is a plot of the test set capacity by power source.
+CPS then has a max capacity of $35000+20000+10000+10000+10000=85000$ MWh at a cost of $(50+56+70+45+45) \times 85000 = \$22,610,000$. Below is a plot of the test set capacity by power source.
 
 ![Source Area](https://williamscale.github.io/attachments/cps-load-prediction/source_area.png)
 
@@ -315,13 +315,13 @@ $$
 
 The CPS capacity for November 25 is below.
 
-| Source       | Capacity | Cumulative Capacity |
-|:-------------|:--------:|:-------------------:|
-| Baseload     | 35,000   | 35,000              |
-| Intermediate | 20,000   | 55,000              |
-| Wind         | 9,265    | 64,265              |
-| Solar        | 7,918    | 72,184              |
-| Peaking      | 10,000   | 82,184              |
+| Source       | Capacity [MWh] | Cumulative Capacity [MWh] |
+|:-------------|:--------------:|:-------------------------:|
+| Baseload     | 35,000         | 35,000                    |
+| Intermediate | 20,000         | 55,000                    |
+| Wind         | 9,265          | 64,265                    |
+| Solar        | 7,918          | 72,184                    |
+| Peaking      | 10,000         | 82,184                    |
 
 All of the baseload, intermediate, wind, and solar capacities are needed on this day. Max peaking capacity is not necessary, but $75938-72184=3754$ MWh should be generated from the peaking plant to fully cover the predicted demand (plus buffer). The operating cost for this day is then given by:
 
@@ -332,7 +332,7 @@ $$
 \end{aligned}
 $$
 
-However, on November 25, the actual demand from CPS customers was 60,190 MWh. CPS customer rates for [residential service](https://www.cpsenergy.com/content/dam/corporate/en/Documents/2024_Rate_ResidentialElectric.pdf) in non-peak periods (which the test set is in) is $\textdollar$0.07503 per kWh or $\textdollar$75.03 per MWh. For [commercial service](https://www.cpsenergy.com/content/dam/corporate/en/Documents/2024_Rate_GeneralService.pdf), the rate is $\textdollar$78.17 per MWh. I am unsure what proportion of the demand is generated by residential customers vs. commercial customers. For this exercise, I sample from a normal distribution with a mean of 0.5 and standard deviation of 0.02 and set these values as the proportion of demand due to residential customers. The commercial proportion is the remainder. On November 25, the residential proportion is 50.2% with $1-0.502=0.498$ being the commercial proportion. Therefore, the revenue generated from CPS customers is given by:
+However, on November 25, the actual demand from CPS customers was 60,190 MWh. CPS customer rates for [residential service](https://www.cpsenergy.com/content/dam/corporate/en/Documents/2024_Rate_ResidentialElectric.pdf) in non-peak periods (which the test set is in) is $0.07503 per kWh or $75.03 per MWh. For [commercial service](https://www.cpsenergy.com/content/dam/corporate/en/Documents/2024_Rate_GeneralService.pdf), the rate is $78.17 per MWh. I am unsure what proportion of the demand is generated by residential customers vs. commercial customers. For this exercise, I sample from a normal distribution with a mean of 0.5 and standard deviation of 0.02 and set these values as the proportion of demand due to residential customers. The commercial proportion is the remainder. On November 25, the residential proportion is 50.2% with $1-0.502=0.498$ being the commercial proportion. Therefore, the revenue generated from CPS customers is given by:
 
 $$
 \text{revenue} = 60190 \times \left( (0.502)(75.03) + (0.498)(78.17) \right) = \$4,610,100
@@ -356,9 +356,9 @@ Simply put, the following events need to occur in order to sell excess energy:
 2. Generate excess CPS customer demand.
 3. Non-CPS demand exists.
 
-For rates at which CPS can sell on the open market, I again sampled from a truncated normal distribution with a mean of $\textdollar$100 per MWh, a standard deviation of 25, a minimum of $\textdollar$0.01, and a maximum of $\textdollar$150. Then, CPS sells all the excess energy generated that there is demand for, producing a revenue of $\textdollar$1,026,463 on November 25. In the case of underestimating CPS demand, CPS then buys power in the open market, incurring expenses. I then repeat this process for all days in the test set.
+For rates at which CPS can sell on the open market, I again sampled from a truncated normal distribution with a mean of $100 per MWh, a standard deviation of 25, a minimum of $0.01, and a maximum of $150. Then, CPS sells all the excess energy generated that there is demand for, producing a revenue of $1,026,463 on November 25. In the case of underestimating CPS demand, CPS then buys power in the open market, incurring expenses. I then repeat this process for all days in the test set.
 
-The total profit is then given by:
+The total profit for the test set is then given by:
 
 $$
 \begin{aligned}
